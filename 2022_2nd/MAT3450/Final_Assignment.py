@@ -1,4 +1,4 @@
-import telepot
+import telepota
 import requests
 from telepot.loop import MessageLoop
 from bs4 import BeautifulSoup
