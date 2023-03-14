@@ -20,4 +20,4 @@ do
 	mv $i `echo $i | tr '[A-Z][a-z]' '[a-z][A-Z]'`
 	fi
 done
-exit 0ㅁㄴㅇㄹ
+exit 0
