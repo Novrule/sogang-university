@@ -13,3 +13,4 @@ done
 
 egrep "$temp" mydata | awk -f display.awk
 exit 0
+ㅁㄴㅇㄹ
