@@ -1,0 +1,15 @@
+if [ $# -eq 0 ]
+then
+	echo "Usage : Phone search for [...search for]"
+	echo "You didn't tell me what you wnat to search for"
+	exit 0
+fi
+
+temp=$1
+for arg in "$@"
+do
+	temp=$temp\|$arg
+done
+
+egrep "$temp" mydata | awk -f display.awk
+exit 0
