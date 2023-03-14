@@ -4,4 +4,3 @@ BEGIN{FS="|"}
 {print "address : "$2;}
 {print "phone : "$3;}
 {print "<---------------";}
-
