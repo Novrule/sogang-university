@@ -1,4 +1,4 @@
-cc = gcc
+cc = gcca
 target = main
 objects =  main.o calculate.o print.o
 
