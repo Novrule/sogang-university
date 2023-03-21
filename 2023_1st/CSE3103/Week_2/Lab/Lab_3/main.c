@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
 
 		if (Count != 0) {
 			B_Flag = 1;
-		}ㅁ
+		}
 
 		if (fgets(line2, BNUM, fp) == NULL) {
 			break;
