@@ -1,20 +1,20 @@
 #include "header.h"
-
-/* Å×½ºÆ® ÄÉÀÌ½º°¡ ¸î °³ ÀÎÁö ÀÔ·Â ¹Þ°í ±× È½¼ö¸¸Å­ calculateÇÔ¼ö¿Í printÇÔ¼ö¸¦ ½ÇÇàÇØÁÖ´Â mainÇÔ¼ö */
+ã…
+/* í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ê°€ ëª‡ ê°œ ì¸ì§€ ìž…ë ¥ ë°›ê³  ê·¸ íšŸìˆ˜ë§Œí¼ calculateí•¨ìˆ˜ì™€ printí•¨ìˆ˜ë¥¼ ì‹¤í–‰í•´ì£¼ëŠ” mainí•¨ìˆ˜ */
 
 int main(void) {
 	int T;
 
-	scanf("%d", &T); //Å×½ºÆ® ÄÉÀÌ½º¸¦ ÀÔ·Â ¹Þ¾ÆÁÜ
+	scanf("%d", &T); //í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ë¥¼ ìž…ë ¥ ë°›ì•„ì¤Œ
 
-	while (T--) { //ÀÔ·Â ¹ÞÀº Å×½ºÆ® ÄÉÀÌ½ºÀÇ È½¼ö¸¸Å­ ¹Ýº¹ÇØÁÜ
-		int arr[10] = { 0, }; //0~9±îÁö ¸î ¹ø ¾¿ ³ª¿À´ÂÁö ÀúÀåÇØÁÖ´Â ¹è¿­ ÃÊ±âÈ­
+	while (T--) { //ìž…ë ¥ ë°›ì€ í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ì˜ íšŸìˆ˜ë§Œí¼ ë°˜ë³µí•´ì¤Œ
+		int arr[10] = { 0, }; //0~9ê¹Œì§€ ëª‡ ë²ˆ ì”© ë‚˜ì˜¤ëŠ”ì§€ ì €ìž¥í•´ì£¼ëŠ” ë°°ì—´ ì´ˆê¸°í™”
 
-		calculate(arr); //1ºÎÅÍ N±îÁöÀÇ ¼ýÀÚ¸¦ ÀÌ·ç´Â ¼ýÀÚ¸¦ °è»êÇØ ¹è¿­¿¡ ÀúÀåÇØÁÖ´Â calculateÇÔ¼ö¸¦ È£ÃâÇÔ
+		calculate(arr); //1ë¶€í„° Nê¹Œì§€ì˜ ìˆ«ìžë¥¼ ì´ë£¨ëŠ” ìˆ«ìžë¥¼ ê³„ì‚°í•´ ë°°ì—´ì— ì €ìž¥í•´ì£¼ëŠ” calculateí•¨ìˆ˜ë¥¼ í˜¸ì¶œí•¨
 
-		print(arr); //¹è¿­À» Àü´Þ¹Þ¾Æ ±× ¹è¿­ ¾È¿¡ ÀÖ´Â ¼ýÀÚµéÀ» ÇÑÄ­¾¿ ¶ç¾î¼­ Ãâ·ÂÇØÁÖ´Â printÇÔ¼ö¸¦ È£ÃâÇÔ
+		print(arr); //ë°°ì—´ì„ ì „ë‹¬ë°›ì•„ ê·¸ ë°°ì—´ ì•ˆì— ìžˆëŠ” ìˆ«ìžë“¤ì„ í•œì¹¸ì”© ë„ì–´ì„œ ì¶œë ¥í•´ì£¼ëŠ” printí•¨ìˆ˜ë¥¼ í˜¸ì¶œí•¨
 	}
 
-	return 0; //Á¾·á
+	return 0; //ì¢…ë£Œ
 }
 
