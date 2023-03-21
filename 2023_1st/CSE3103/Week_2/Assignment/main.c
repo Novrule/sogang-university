@@ -1,5 +1,5 @@
 #include "header.h"
-ㅁ
+
 /* 테스트 케이스가 몇 개 인지 입력 받고 그 횟수만큼 calculate함수와 print함수를 실행해주는 main함수 */
 
 int main(void) {
