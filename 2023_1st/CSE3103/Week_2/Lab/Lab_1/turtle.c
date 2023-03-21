@@ -4,4 +4,3 @@
 void turtle() {
     printf("turtle");
 }
-a
