@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <malloc.h>ㅁ
 #include <stdlib.h>
 
 #define BNUM 256
