@@ -6,7 +6,7 @@ objects = main.o string_manipulation.o output.o
 
 $(target) : $(objects)
 	$(cc) $(cflags) -o $(target) $(objects)
-ㅁ
+
 %.o : %.c
 	$(cc) $(cflags) -c -o $@ $<
 
