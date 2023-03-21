@@ -1,4 +1,4 @@
-#include "Header.h"ㅁ
+#include "Header.h"
 
 void Print_Line(char* line, int* Count, int* B_Flag) {
 	int i, N_Blanks, N_Chars, Start = 0;
