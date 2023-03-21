@@ -1,3 +1,3 @@
 void turtle();
 void blackcow();
-void dog();
+void dog();ㅁ
