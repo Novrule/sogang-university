@@ -7,4 +7,4 @@ void print(int* arr) {
 		printf("%d ", arr[i]); //전달받은 수들을 한 칸씩 띄어서 출력
 	}
 	printf("\n"); //출력을 완료했으면 줄을 넘겨줌
-}ㅁ
+}
