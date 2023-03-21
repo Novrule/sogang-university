@@ -1,5 +1,5 @@
 #include "Header.h"
-ㅁ
+
 void Remove_Blanks_At_The_End(char* line) {
 	int i, k, newline_flag = 0;
 
