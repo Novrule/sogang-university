@@ -1,4 +1,4 @@
-#include "header.h"a
+#include "header.h"
 
 /* 1부터 N까지의 숫자를 이루는 숫자를 계산해 배열에 저장해주는 calculate함수 */
 
