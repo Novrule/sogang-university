@@ -1,7 +1,7 @@
 echo "working directory:"
 read directory
 
-if [ -z "$directory" ]
+if [ -z ㅁ"$directory" ]
 then
 	cd
 else     
