@@ -1,4 +1,4 @@
-BEGIN{FS="|"}ㅁ
+BEGIN{FS="|"}
 {print "--------------->";}
 {print "name : "$1;}
 {print "address : "$2;}
