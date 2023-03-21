@@ -4,7 +4,7 @@ then
 	echo "You didn't tell me what you want to search for"
 	exit 0
 fi
-ㅁ
+
 temp=$1
 for arg in "$@"
 do
