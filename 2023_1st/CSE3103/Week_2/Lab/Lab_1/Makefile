@@ -1,7 +1,7 @@
 cc = gcc
 target = animal
 objects =  main.o dog.o blackcow.o turtle.o
-ㅁ
+
 $(target) : $(objects)
 	$(cc) -o $(target) $(objects)
 
