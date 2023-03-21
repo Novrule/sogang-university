@@ -4,4 +4,3 @@
 void dog() {
     printf("dog");
 }
-ㅁ
