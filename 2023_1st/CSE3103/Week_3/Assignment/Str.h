@@ -1,4 +1,4 @@
-class Str {ㅁ
+class Str {
 private:
     char* str; //string에 들어갈 내용
     int len; //string에 들어간 내용의 길이
