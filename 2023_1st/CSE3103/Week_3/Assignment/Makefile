@@ -3,7 +3,7 @@ CPPFLAGS = -g -c
 
 target = main
 
-objects = main.o Str.o
+objects = maㅁin.o Str.o
 src = main.cpp Str.cpp
 
 $(target): $(objects) Str.h
