@@ -1,77 +1,77 @@
 #include <iostream>
 #include <string.h>
 #include "Str.h"
-
+ã…
 using namespace std;
 
-Str::Str(int length) { //stringÀÇ ±æÀÌ¸¦ ÀÔ·Â¹Þ¾Æ ±× ±æÀÌÀÇ ¹®ÀÚ¿­À» »ý¼ºÇØ ÁÜ
-    len = length; //Àü´Þ¹ÞÀº ¹®ÀÚ¿­ÀÇ ±æÀÌ ÀúÀå
+Str::Str(int length) { //stringì˜ ê¸¸ì´ë¥¼ ìž…ë ¥ë°›ì•„ ê·¸ ê¸¸ì´ì˜ ë¬¸ìžì—´ì„ ìƒì„±í•´ ì¤Œ
+    len = length; //ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì˜ ê¸¸ì´ ì €ìž¥
 
-    str = new char[len + 1]; //Àü´Þ¹ÞÀº ¹®ÀÚ¿­ÀÇ ±æÀÌº¸´Ù ÇÏ³ª ´õ ±ä ¹®ÀÚ¿­ »ý¼º (¹®ÀÚ¿­ÀÇ ¸¶Áö¸·¿¡ \0À» ³Ö¾îÁà¾ß ÇÏ¹Ç·Î)
+    str = new char[len + 1]; //ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì˜ ê¸¸ì´ë³´ë‹¤ í•˜ë‚˜ ë” ê¸´ ë¬¸ìžì—´ ìƒì„± (ë¬¸ìžì—´ì˜ ë§ˆì§€ë§‰ì— \0ì„ ë„£ì–´ì¤˜ì•¼ í•˜ë¯€ë¡œ)
 
-    str[0] = '\0'; //³»¿ëÀ» ÀÔ·Â¹ÞÁö´Â ¾Ê¾ÒÀ¸´Ï ¿ì¼± ¹®ÀÚ¿­¿¡ NULLÀ» ÀúÀåÇÔ
+    str[0] = '\0'; //ë‚´ìš©ì„ ìž…ë ¥ë°›ì§€ëŠ” ì•Šì•˜ìœ¼ë‹ˆ ìš°ì„  ë¬¸ìžì—´ì— NULLì„ ì €ìž¥í•¨
 }
 
-Str::Str(char* contents) { //string¿¡ ³»¿ëÀ» ³Ö¾îÁÜ
-    len = strlen(contents); //Àü´Þ¹ÞÀº ¹®ÀÚ¿­ÀÇ ±æÀÌ ÀúÀå
+Str::Str(char* contents) { //stringì— ë‚´ìš©ì„ ë„£ì–´ì¤Œ
+    len = strlen(contents); //ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì˜ ê¸¸ì´ ì €ìž¥
 
-    str = new char[len + 1]; //Àü´Þ¹ÞÀº ¹®ÀÚ¿­ÀÇ ±æÀÌº¸´Ù ÇÏ³ª ´õ ±ä »õ·Î¿î ¹®ÀÚ¿­ »ý¼º (¹®ÀÚ¿­ÀÇ ¸¶Áö¸·¿¡ \0À» ³Ö¾îÁà¾ß ÇÏ¹Ç·Î)
+    str = new char[len + 1]; //ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì˜ ê¸¸ì´ë³´ë‹¤ í•˜ë‚˜ ë” ê¸´ ìƒˆë¡œìš´ ë¬¸ìžì—´ ìƒì„± (ë¬¸ìžì—´ì˜ ë§ˆì§€ë§‰ì— \0ì„ ë„£ì–´ì¤˜ì•¼ í•˜ë¯€ë¡œ)
 
-    strcpy(str, contents); //»ý¼ºÇÑ ¹®ÀÚ¿­¿¡ Àü´Þ¹ÞÀº ¹®ÀÚ¿­À» º¹»çÇØ¼­ ³Ö¾îÁÜ
+    strcpy(str, contents); //ìƒì„±í•œ ë¬¸ìžì—´ì— ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì„ ë³µì‚¬í•´ì„œ ë„£ì–´ì¤Œ
 
-    str[len] = '\0'; //¹®ÀÚ¿­ÀÇ ¸¶Áö¸·¿¡ NULLÀ» ÀúÀåÇÔ
+    str[len] = '\0'; //ë¬¸ìžì—´ì˜ ë§ˆì§€ë§‰ì— NULLì„ ì €ìž¥í•¨
 }
 
-Str::~Str() { //¼Ò¸êÀÚ
-    delete[]str; //str¿¡ ÀÖ´Â ¹®ÀÚ¿­À» ¼Ò¸ê½ÃÄÑ ÁÜ
+Str::~Str() { //ì†Œë©¸ìž
+    delete[]str; //strì— ìžˆëŠ” ë¬¸ìžì—´ì„ ì†Œë©¸ì‹œì¼œ ì¤Œ
 }
 
-int Str::length() { //string¿¡ µé¾î°£ ¹®ÀÚ¿­ÀÇ ±æÀÌ ¹ÝÈ¯
-    return len; //¾Õ¼­ ÀúÀåÇÑ stringÀÇ ±æÀÌ¸¦ ¹ÝÈ¯ÇØ ÁÜ
+int Str::length() { //stringì— ë“¤ì–´ê°„ ë¬¸ìžì—´ì˜ ê¸¸ì´ ë°˜í™˜
+    return len; //ì•žì„œ ì €ìž¥í•œ stringì˜ ê¸¸ì´ë¥¼ ë°˜í™˜í•´ ì¤Œ
 }
 
-char* Str::contents() { //string¿¡ µé¾î°£ ¹®ÀÚ¿­ÀÇ ³»¿ë ¹ÝÈ¯
-    return str; //¾Õ¼­ ÀúÀåÇÑ stringÀ» ¹ÝÈ¯ÇØ ÁÜ
+char* Str::contents() { //stringì— ë“¤ì–´ê°„ ë¬¸ìžì—´ì˜ ë‚´ìš© ë°˜í™˜
+    return str; //ì•žì„œ ì €ìž¥í•œ stringì„ ë°˜í™˜í•´ ì¤Œ
 }
 
-int Str::compare(char* a) { //strcmp ÇÔ¼ö¸¦ ÀÌ¿ëÇØ ¹®ÀÚ¿­ ºñ±³
-    return strcmp(str, a); //str¿¡ ÀÖ´Â ¹®ÀÚ¿­°ú ÁÖ¾îÁø ¹®ÀÚ¿­À» strcmp·Î ºñ±³ÇÑ ÈÄ °á°ú¸¦ ¹ÝÈ¯
+int Str::compare(char* a) { //strcmp í•¨ìˆ˜ë¥¼ ì´ìš©í•´ ë¬¸ìžì—´ ë¹„êµ
+    return strcmp(str, a); //strì— ìžˆëŠ” ë¬¸ìžì—´ê³¼ ì£¼ì–´ì§„ ë¬¸ìžì—´ì„ strcmpë¡œ ë¹„êµí•œ í›„ ê²°ê³¼ë¥¼ ë°˜í™˜
 }
 
-int Str::compare(Str& a) { //strcmp ÇÔ¼ö¸¦ ÀÌ¿ëÇØ ¹®ÀÚ¿­ ºñ±³
-    return strcmp(str, a.contents()); //str¿¡ ÀÖ´Â ¹®ÀÚ¿­°ú ÁÖ¾îÁø Str¾È¿¡ ÀÖ´Â ¹®ÀÚ¿­À» strcmp·Î ºñ±³ÇÑ ÈÄ °á°ú¸¦ ¹ÝÈ¯
+int Str::compare(Str& a) { //strcmp í•¨ìˆ˜ë¥¼ ì´ìš©í•´ ë¬¸ìžì—´ ë¹„êµ
+    return strcmp(str, a.contents()); //strì— ìžˆëŠ” ë¬¸ìžì—´ê³¼ ì£¼ì–´ì§„ Strì•ˆì— ìžˆëŠ” ë¬¸ìžì—´ì„ strcmpë¡œ ë¹„êµí•œ í›„ ê²°ê³¼ë¥¼ ë°˜í™˜
 }
 
-void Str::operator=(char* a) { //ÁÖ¾îÁø ¹®ÀÚ¿­ÀÇ ³»¿ëÀ» ÀúÀå
-    delete[] str; //str¿¡ ÀÖ´Â ¹®ÀÚ¿­À» ¼Ò¸ê½ÃÄÑÁÜ
+void Str::operator=(char* a) { //ì£¼ì–´ì§„ ë¬¸ìžì—´ì˜ ë‚´ìš©ì„ ì €ìž¥
+    delete[] str; //strì— ìžˆëŠ” ë¬¸ìžì—´ì„ ì†Œë©¸ì‹œì¼œì¤Œ
 
-    len = strlen(a); //Àü´Þ¹ÞÀº ¹®ÀÚ¿­ÀÇ ±æÀÌ ÀúÀå
+    len = strlen(a); //ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì˜ ê¸¸ì´ ì €ìž¥
 
-    if (len > 0) { //Àü´Þ¹ÞÀº ¹®ÀÚ¿­ÀÇ ±æÀÌ°¡ 0º¸´Ù ±æ´Ù¸é
-        str = new char[len + 1]; //Àü´Þ¹ÞÀº ¹®ÀÚ¿­ÀÇ ±æÀÌº¸´Ù ÇÏ³ª ´õ ±ä »õ·Î¿î ¹®ÀÚ¿­ »ý¼º (¹®ÀÚ¿­ÀÇ ¸¶Áö¸·¿¡ \0À» ³Ö¾îÁà¾ß ÇÏ¹Ç·Î)
+    if (len > 0) { //ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì˜ ê¸¸ì´ê°€ 0ë³´ë‹¤ ê¸¸ë‹¤ë©´
+        str = new char[len + 1]; //ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì˜ ê¸¸ì´ë³´ë‹¤ í•˜ë‚˜ ë” ê¸´ ìƒˆë¡œìš´ ë¬¸ìžì—´ ìƒì„± (ë¬¸ìžì—´ì˜ ë§ˆì§€ë§‰ì— \0ì„ ë„£ì–´ì¤˜ì•¼ í•˜ë¯€ë¡œ)
 
-        strcpy(str, a); //»ý¼ºÇÑ ¹®ÀÚ¿­¿¡ Àü´Þ¹ÞÀº ¹®ÀÚ¿­À» º¹»çÇØ¼­ ³Ö¾îÁÜ
+        strcpy(str, a); //ìƒì„±í•œ ë¬¸ìžì—´ì— ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì„ ë³µì‚¬í•´ì„œ ë„£ì–´ì¤Œ
 
-        str[len] = '\0'; //¹®ÀÚ¿­ÀÇ ¸¶Áö¸·¿¡ NULLÀ» ÀúÀåÇÔ
+        str[len] = '\0'; //ë¬¸ìžì—´ì˜ ë§ˆì§€ë§‰ì— NULLì„ ì €ìž¥í•¨
     }
-    else { //Àü´Þ¹ÞÀº ¹®ÀÚ¿­ÀÇ ±æÀÌ°¡ 0 ÀÌÇÏ¶ó¸é
-        cout << "Error" << endl; //¹«¾ð°¡ ¹®Á¦°¡ ÀÖÀ¸¹Ç·Î ¿À·ù ¸Þ½ÃÁö¸¦ Ãâ·Â
+    else { //ì „ë‹¬ë°›ì€ ë¬¸ìžì—´ì˜ ê¸¸ì´ê°€ 0 ì´í•˜ë¼ë©´
+        cout << "Error" << endl; //ë¬´ì–¸ê°€ ë¬¸ì œê°€ ìžˆìœ¼ë¯€ë¡œ ì˜¤ë¥˜ ë©”ì‹œì§€ë¥¼ ì¶œë ¥
     }
 }
 
-void Str::operator=(Str& a) { //ÁÖ¾îÁø Str¿¡ ÀÖ´Â ¹®ÀÚ¿­ÀÇ ³»¿ëÀ» ÀúÀå
-    delete[] str; //str¿¡ ÀÖ´Â ¹®ÀÚ¿­À» ¼Ò¸ê½ÃÄÑÁÜ
+void Str::operator=(Str& a) { //ì£¼ì–´ì§„ Strì— ìžˆëŠ” ë¬¸ìžì—´ì˜ ë‚´ìš©ì„ ì €ìž¥
+    delete[] str; //strì— ìžˆëŠ” ë¬¸ìžì—´ì„ ì†Œë©¸ì‹œì¼œì¤Œ
 
-    len = a.length(); //Àü´Þ¹ÞÀº Str¿¡ ÀÖ´Â ¹®ÀÚ¿­ÀÇ ±æÀÌ ÀúÀå
+    len = a.length(); //ì „ë‹¬ë°›ì€ Strì— ìžˆëŠ” ë¬¸ìžì—´ì˜ ê¸¸ì´ ì €ìž¥
 
-    if (len > 0) { //Àü´Þ¹ÞÀº Str¿¡ ÀÖ´Â ¹®ÀÚ¿­ÀÇ ±æÀÌ°¡ 0º¸´Ù ±æ´Ù¸é
-        str = new char[len + 1]; //Àü´Þ¹ÞÀº Str¿¡ ÀÖ´Â ¹®ÀÚ¿­ÀÇ ±æÀÌº¸´Ù ÇÏ³ª ´õ ±ä »õ·Î¿î ¹®ÀÚ¿­ »ý¼º (¹®ÀÚ¿­ÀÇ ¸¶Áö¸·¿¡ \0À» ³Ö¾îÁà¾ß ÇÏ¹Ç·Î)
+    if (len > 0) { //ì „ë‹¬ë°›ì€ Strì— ìžˆëŠ” ë¬¸ìžì—´ì˜ ê¸¸ì´ê°€ 0ë³´ë‹¤ ê¸¸ë‹¤ë©´
+        str = new char[len + 1]; //ì „ë‹¬ë°›ì€ Strì— ìžˆëŠ” ë¬¸ìžì—´ì˜ ê¸¸ì´ë³´ë‹¤ í•˜ë‚˜ ë” ê¸´ ìƒˆë¡œìš´ ë¬¸ìžì—´ ìƒì„± (ë¬¸ìžì—´ì˜ ë§ˆì§€ë§‰ì— \0ì„ ë„£ì–´ì¤˜ì•¼ í•˜ë¯€ë¡œ)
 
-        strcpy(str, a.contents()); //»ý¼ºÇÑ ¹®ÀÚ¿­¿¡ Àü´Þ¹ÞÀº Str¿¡ ÀÖ´Â ¹®ÀÚ¿­À» º¹»çÇØ¼­ ³Ö¾îÁÜ
+        strcpy(str, a.contents()); //ìƒì„±í•œ ë¬¸ìžì—´ì— ì „ë‹¬ë°›ì€ Strì— ìžˆëŠ” ë¬¸ìžì—´ì„ ë³µì‚¬í•´ì„œ ë„£ì–´ì¤Œ
 
-        str[len] = '\0'; //¹®ÀÚ¿­ÀÇ ¸¶Áö¸·¿¡ NULLÀ» ÀúÀåÇÔ
+        str[len] = '\0'; //ë¬¸ìžì—´ì˜ ë§ˆì§€ë§‰ì— NULLì„ ì €ìž¥í•¨
     }
-    else { //Àü´Þ¹ÞÀº Str¿¡ ÀÖ´Â ¹®ÀÚ¿­ÀÇ ±æÀÌ°¡ 0 ÀÌÇÏ¶ó¸é
-        cout << "Error" << endl; //¹«¾ð°¡ ¹®Á¦°¡ ÀÖÀ¸¹Ç·Î ¿À·ù ¸Þ½ÃÁö¸¦ Ãâ·Â
+    else { //ì „ë‹¬ë°›ì€ Strì— ìžˆëŠ” ë¬¸ìžì—´ì˜ ê¸¸ì´ê°€ 0 ì´í•˜ë¼ë©´
+        cout << "Error" << endl; //ë¬´ì–¸ê°€ ë¬¸ì œê°€ ìžˆìœ¼ë¯€ë¡œ ì˜¤ë¥˜ ë©”ì‹œì§€ë¥¼ ì¶œë ¥
     }
 }
