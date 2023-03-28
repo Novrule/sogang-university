@@ -2,7 +2,7 @@ class Str {
 private:
     char* str; //string에 들어갈 내용
     int len; //string에 들어간 내용의 길이
-public:ㅁ
+public:
     Str(int leng); //string의 크기를 leng으로 지정함
     Str(char* neyong); //string의 내용을 neyong으로 지정함
     ~Str(); //소멸자
