@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string.h>
 #include "Str.h"
-ㅁ
+
 using namespace std;
 
 Str::Str(int length) { //string의 길이를 입력받아 그 길이의 문자열을 생성해 줌
