@@ -1,6 +1,6 @@
 cc = g++
 CPPFLAGS = -g -c
-
+a
 target = main
 
 objects = main.o Str.o
