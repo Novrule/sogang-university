@@ -1,15 +1,15 @@
-class Str {
+class Str {ã…
 private:
-    char* str; //string¿¡ µé¾î°¥ ³»¿ë
-    int len; //string¿¡ µé¾î°£ ³»¿ëÀÇ ±æÀÌ
+    char* str; //stringì— ë“¤ì–´ê°ˆ ë‚´ìš©
+    int len; //stringì— ë“¤ì–´ê°„ ë‚´ìš©ì˜ ê¸¸ì´
 public:
-    Str(int leng); //stringÀÇ Å©±â¸¦ lengÀ¸·Î ÁöÁ¤ÇÔ
-    Str(char* neyong); //stringÀÇ ³»¿ëÀ» neyongÀ¸·Î ÁöÁ¤ÇÔ
-    ~Str(); //¼Ò¸êÀÚ
-    int length(void); //string¿¡ µé¾î°£ ³»¿ëÀÇ ±æÀÌ¸¦ ¹İÈ¯ÇØÁÖ´Â ÇÔ¼ö
-    char* contents(void); //string¿¡ µé¾î°£ ³»¿ëÀ» ¹İÈ¯ÇØÁÖ´Â ÇÔ¼ö
-    int compare(class Str& a); //a¿¡ ÀÖ´Â ³»¿ë°ú strcmpÇØÁÖ´Â ÇÔ¼ö
-    int compare(char* a); //a¿¡ ÀÖ´Â ³»¿ë°ú strcmpÇØÁÖ´Â ÇÔ¼ö
-    void operator=(char* a); //stringÀÇ ³»¿ëÀ» ÀúÀåÇØÁÖ´Â ÇÔ¼ö
-    void operator=(class Str& a); //StrÀÇ ³»¿ëÀ» ÀúÀåÇØÁÖ´Â ÇÔ¼ö
+    Str(int leng); //stringì˜ í¬ê¸°ë¥¼ lengìœ¼ë¡œ ì§€ì •í•¨
+    Str(char* neyong); //stringì˜ ë‚´ìš©ì„ neyongìœ¼ë¡œ ì§€ì •í•¨
+    ~Str(); //ì†Œë©¸ì
+    int length(void); //stringì— ë“¤ì–´ê°„ ë‚´ìš©ì˜ ê¸¸ì´ë¥¼ ë°˜í™˜í•´ì£¼ëŠ” í•¨ìˆ˜
+    char* contents(void); //stringì— ë“¤ì–´ê°„ ë‚´ìš©ì„ ë°˜í™˜í•´ì£¼ëŠ” í•¨ìˆ˜
+    int compare(class Str& a); //aì— ìˆëŠ” ë‚´ìš©ê³¼ strcmpí•´ì£¼ëŠ” í•¨ìˆ˜
+    int compare(char* a); //aì— ìˆëŠ” ë‚´ìš©ê³¼ strcmpí•´ì£¼ëŠ” í•¨ìˆ˜
+    void operator=(char* a); //stringì˜ ë‚´ìš©ì„ ì €ì¥í•´ì£¼ëŠ” í•¨ìˆ˜
+    void operator=(class Str& a); //Strì˜ ë‚´ìš©ì„ ì €ì¥í•´ì£¼ëŠ” í•¨ìˆ˜
 };
