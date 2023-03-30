@@ -1,5 +1,5 @@
 cc = g++
-CPPFLAGS = -g -c
+cppflags = -g -c
 
 target = main
 
