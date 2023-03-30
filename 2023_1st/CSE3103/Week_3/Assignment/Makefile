@@ -1,12 +1,12 @@
 cc = g++
-CPPFLAGS = -g -c
+cppflags= -g -c
 
 target = main
 
 objects = main.o Str.o
 src = main.cpp Str.cpp
 
-$(target): $(objects) Str.h
+$(target): $(objects)
 	$(cc) -o $(target) $(objects)
 
 clean: 
