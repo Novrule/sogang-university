@@ -3,7 +3,7 @@ cppflags = -g -c
 
 target = main
 
-objectas = main.o Array.o RangeArray.o
+objects = main.o Array.o RangeArray.o
 src = main.cpp Array.cpp RangeArray.cpp
 
 $(target): $(objects)
