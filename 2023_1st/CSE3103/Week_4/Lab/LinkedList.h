@@ -83,7 +83,7 @@ template <class T> void LinkedList<T>::Print() {
 		for (i = first; i != NULL; i = i->link) {
 			if (index == current_size) {
 				cout << "[" << index << "|";
-				cout << i->data << "]->";
+				cout << i->data << "]";
 			}
 			else {
 				cout << "[" << index << "|";
