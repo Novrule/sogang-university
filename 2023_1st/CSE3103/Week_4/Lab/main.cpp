@@ -40,6 +40,7 @@ int main() {
 		case 2:
 			if (p->Delete(tmpItem) == true) {
 				cout << tmpItem << "가 삭제되었습니다." << endl;
+				break;
 			}			
 			else {
 				cout << "비어있습니다. 삭제 실패" << endl;
