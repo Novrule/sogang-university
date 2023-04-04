@@ -8,7 +8,7 @@ using namespace std;
 
 template <class T> class Stack : public LinkedList<T> {
 public:
-	bool Delete(T& element);
+	virtual bool Delete(T& element);
 };
 
 template <class T> bool Stack<T>::Delete(T& element) {
