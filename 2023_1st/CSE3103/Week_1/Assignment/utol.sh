@@ -1,10 +1,8 @@
 echo "working directory:"
 read directory
 
-if [ -z "$directory" ]
-then
-	cd
-else     
+if [ $directory ]
+then     
 	cd $directory  
 	if [ $? -ne 0 ]  
 	then
@@ -17,7 +15,8 @@ for i in *
 do
 	if [ -f $i ]
 	then
-	mv $i `echo $i | tr '[A-Z][a-z]' '[a-z][A-Z]'`
+		mv $i `echo $i | tr '[A-Z][a-z]' '[a-z][A-Z]'`
 	fi
 done
+
 exit 0
