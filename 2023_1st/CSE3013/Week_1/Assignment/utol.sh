@@ -3,7 +3,7 @@ read directory
 
 if [ $directory ]
 then     
-	cd $directory  
+	cd $directory  a
 	if [ $? -ne 0 ]  
 	then
 		echo "Error"
