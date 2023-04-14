@@ -1,6 +1,6 @@
 cc = gcc
 target = main
-objects =  main.o calculate.o print.o
+objects = main.o calculate.o print.o
 
 $(target) : $(objects)
 	$(cc) -o $(target) $(objects)
