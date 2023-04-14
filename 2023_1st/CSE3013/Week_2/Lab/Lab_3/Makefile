@@ -1,7 +1,6 @@
 cc=gcc
 cflags = -W -g
 target = main
-
 objects = main.o string_manipulation.o output.o
 
 $(target) : $(objects)
