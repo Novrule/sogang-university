@@ -18,7 +18,6 @@ void Remove_Blanks_At_The_End(char* line) {
 			break;
 		}
 	}
-	i++;
 
 	if (newline_flag == 1) {
 		line[i + 1] = '\n';
