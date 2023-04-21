@@ -23,7 +23,7 @@ Str::Str(const char* contents) { //string에 내용을 넣어줌
 }
 
 Str::~Str() { //소멸자
-    delete[]str; //str에 있는 문자열을 소멸시켜 줌
+    delete[] str; //str에 있는 문자열을 소멸시켜 줌
 }
 
 int Str::length() { //string에 들어간 문자열의 길이 반환
