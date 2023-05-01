@@ -10,6 +10,8 @@ cards;
 ;
 run;
 
+ods graphics off;
+
 proc univariate data=king plot;
 class war;
 var age;
