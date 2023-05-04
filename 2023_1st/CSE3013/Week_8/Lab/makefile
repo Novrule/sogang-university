@@ -3,4 +3,3 @@
 
 clean:
 	rm a.out *.o
-ㅁ
