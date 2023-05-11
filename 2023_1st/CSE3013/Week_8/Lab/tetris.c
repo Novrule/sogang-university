@@ -130,13 +130,11 @@ int ProcessCommand(int command) {
 	return ret;
 }
 
-void DrawField(){
-	int i, j;
-
-	for (j = 0; j < HEIGHT; j++) {
-		move(j + 1, 1);
-		for (i = 0; i < WIDTH; i++) {
-			if (field[j][i] == 1) {
+void DrawField() {
+	for (int i = 0; i < HEIGHT; i++) {
+		move(i + 1, 1);
+		for (int j = 0; j < WIDTH; j++) {
+			if (field[i][j] == 1) {
 				attron(A_REVERSE);
 				printw(" ");
 				attroff(A_REVERSE);
@@ -155,11 +153,9 @@ void PrintScore(int score) {
 }
 
 void DrawNextBlock(int* nextBlock) {
-	int i, j;
-
-	for (i = 0; i < BLOCK_HEIGHT; i++) {
+	for (int i = 0; i < BLOCK_HEIGHT; i++) {
 		move(4 + i, WIDTH + 13);
-		for (j = 0; j < BLOCK_WIDTH; j++) {
+		for (int j = 0; j < BLOCK_WIDTH; j++) {
 			if (block[nextBlock[1]][0][i][j] == 1) {
 				attron(A_REVERSE);
 				printw(" ");
@@ -173,10 +169,8 @@ void DrawNextBlock(int* nextBlock) {
 }
 
 void DrawBlock(int y, int x, int blockID, int blockRotate, char tile) {
-	int i, j;
-
-	for (i = 0; i < BLOCK_HEIGHT; i++) {
-		for (j = 0; j < BLOCK_WIDTH; j++) {
+	for (int i = 0; i < BLOCK_HEIGHT; i++) {
+		for (int j = 0; j < BLOCK_WIDTH; j++) {
 			if (block[blockID][blockRotate][i][j] == 1 && i + y >= 0) {
 				move(i + y + 1, j + x + 1);
 				attron(A_REVERSE);
@@ -189,23 +183,21 @@ void DrawBlock(int y, int x, int blockID, int blockRotate, char tile) {
 }
 
 void DrawBox(int y, int x, int height, int width) {
-	int i, j;
-
 	move(y, x);
 	addch(ACS_ULCORNER);
-	for (i = 0; i < width; i++) {
+	for (int i = 0; i < width; i++) {
 		addch(ACS_HLINE);
 	}
 	addch(ACS_URCORNER);
-	for (j = 0; j < height; j++) {
-		move(y + j + 1, x);
+	for (int i = 0; i < height; i++) {
+		move(y + i + 1, x);
 		addch(ACS_VLINE);
-		move(y + j + 1, x + width + 1);
+		move(y + i + 1, x + width + 1);
 		addch(ACS_VLINE);
 	}
-	move(y + j + 1, x);
+	move(y + i + 1, x);
 	addch(ACS_LLCORNER);
-	for (i = 0; i < width; i++) {
+	for (int i = 0; i < width; i++) {
 		addch(ACS_HLINE);
 	}
 	addch(ACS_LRCORNER);
