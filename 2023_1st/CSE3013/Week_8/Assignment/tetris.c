@@ -132,7 +132,7 @@ int ProcessCommand(int command) {
 	return ret;
 }
 
-void DrawField(){
+void DrawField() {
 	for (int i = 0; i < HEIGHT; i++) {
 		move(i + 1, 1);
 		for (int j = 0; j < WIDTH; j++) {
