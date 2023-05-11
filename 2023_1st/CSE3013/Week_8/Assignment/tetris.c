@@ -148,7 +148,6 @@ void DrawField(){
 	}
 }
 
-
 void PrintScore(int score) {
 	move(17, WIDTH + 11);
 	printw("%8d", score);
