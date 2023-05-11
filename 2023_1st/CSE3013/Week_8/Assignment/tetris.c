@@ -199,21 +199,23 @@ void DrawBlock(int y, int x, int blockID, int blockRotate, char tile) {
 }
 
 void DrawBox(int y, int x, int height, int width) {
+	int i, j;
+
 	move(y, x);
 	addch(ACS_ULCORNER);
-	for (int i = 0; i < width; i++) {
+	for (i = 0; i < width; i++) {
 		addch(ACS_HLINE);
 	}
 	addch(ACS_URCORNER);
-	for (int i = 0; i < height; i++) {
-		move(y + i + 1, x);
+	for (j = 0; j < height; j++) {
+		move(y + j + 1, x);
 		addch(ACS_VLINE);
-		move(y + i + 1, x + width + 1);
+		move(y + j + 1, x + width + 1);
 		addch(ACS_VLINE);
 	}
-	move(y + i + 1, x);
+	move(y + j + 1, x);
 	addch(ACS_LLCORNER);
-	for (int i = 0; i < width; i++) {
+	for (i = 0; i < width; i++) {
 		addch(ACS_HLINE);
 	}
 	addch(ACS_LRCORNER);
