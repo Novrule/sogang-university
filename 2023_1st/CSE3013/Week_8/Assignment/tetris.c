@@ -27,11 +27,9 @@ int main(void) {
 }
 
 void InitTetris() {
-	int i, j;
-
-	for (j = 0; j < HEIGHT; j++) {
-		for (i = 0; i < WIDTH; i++) {
-			field[j][i] = 0;
+	for (int i = 0; i < HEIGHT; i++) {
+		for (int j = 0; j < WIDTH; j++) {
+			field[i][j] = 0;
 		}
 	}
 
@@ -53,7 +51,6 @@ void InitTetris() {
 }
 
 void DrawOutline() {
-	int i, j;
 	/* 블럭이 떨어지는 공간의 태두리를 그린다.*/
 	DrawBox(0, 0, HEIGHT, WIDTH);
 
