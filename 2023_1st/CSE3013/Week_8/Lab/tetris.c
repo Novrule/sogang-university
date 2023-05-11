@@ -178,7 +178,7 @@ void DrawBlock(int y, int x, int blockID, int blockRotate, char tile) {
 			}
 		}
 	}
-	move(HEIGHT,WIDTH+10);
+	move(HEIGHT, WIDTH + 10);
 }
 
 void DrawBox(int y, int x, int height, int width) {
