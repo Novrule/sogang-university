@@ -344,9 +344,9 @@ void BlockDown(int sig) {
 		blockY = -1;
 		blockX = WIDTH / 2 - 2;
 
-		DrawNextBlock(nextBlock);
 		DrawField();
 		DrawBlockWithFeatures(blockY, blockX, nextBlock[0], blockRotate);
+		DrawNextBlock(nextBlock);
 		PrintScore(score);
 	}
 
