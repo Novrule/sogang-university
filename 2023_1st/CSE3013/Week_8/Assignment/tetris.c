@@ -422,7 +422,6 @@ void DrawBlockWithFeatures(int y, int x, int blockID, int blockRotate) {
 	DrawShadow(y, x, blockID, blockRotate);
 }
 
-
 void createRankList() {
 	// user code
 }
