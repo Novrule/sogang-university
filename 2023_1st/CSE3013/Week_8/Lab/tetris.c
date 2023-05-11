@@ -15,7 +15,7 @@ int main(void) {
 		clear();
 		switch (menu()) {
 		case MENU_PLAY: play(); break;
-		case MENU_EXIT: exit=1; break;
+		case MENU_EXIT: exit = 1; break;
 		default: break;
 		}
 	}
