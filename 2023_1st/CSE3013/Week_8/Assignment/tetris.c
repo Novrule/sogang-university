@@ -45,7 +45,7 @@ void InitTetris() {
 
 	DrawOutline();
 	DrawField();
-	DrawBlock(blockY, blockX, nextBlock[0], blockRotate, ' ');
+	DrawBlockWithFeatures(blockY, blockX, nextBlock[0], blockRotate);
 	DrawNextBlock(nextBlock);
 	PrintScore(score);
 }
