@@ -1,7 +1,6 @@
 #ifndef _TETRIS_H_
 #define _TETRIS_H_
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -352,6 +351,5 @@ int recommend(RecNode* root);
  *	return	: none
  ***********************************************************/
 void recommendedPlay();
-
 
 #endif
