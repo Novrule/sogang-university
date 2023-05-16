@@ -573,6 +573,7 @@ void writeRankFile() {
 		cur = cur->link;
 		fprintf(fp, "%s %d\n", cur->name, cur->score);
 	}
+	
 	fclose(fp);
 }
 
