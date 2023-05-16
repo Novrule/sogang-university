@@ -1,4 +1,4 @@
-#ifndef _TETRIS_H_a
+#ifndef _TETRIS_H_
 #define _TETRIS_H_
 
 #include <stdio.h>
