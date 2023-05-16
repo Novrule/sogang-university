@@ -547,11 +547,10 @@ void rank() {
 					prev = cur;
 					cur = cur->link;
 				}
-
+				
 				prev->link = cur->link;
 				free(cur);
 				num--;
-
 				printw("result : the rank deleted\n");
 				writeRankFile();
 			}
