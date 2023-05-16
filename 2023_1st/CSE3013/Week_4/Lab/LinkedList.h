@@ -40,7 +40,7 @@ template <class T> void LinkedList<T>::Insert(T element) {
 	current_size++;
 }
 
-template <class T> bool LinkedList<T>::Delete(T &element){
+template <class T> bool LinkedList<T>::Delete(T &element) {
 	if (first == 0) {
 		return false;
 	}
@@ -49,7 +49,7 @@ template <class T> bool LinkedList<T>::Delete(T &element){
 	Node<T>* previous = 0;
 
 	while (1) {
-		if (current->link == 0){
+		if (current->link == 0) {
 			if (previous) {
 				previous->link = current->link;
 			}
