@@ -15,7 +15,7 @@
 #define NUM_OF_SHAPE 7
 #define NUM_OF_ROTATE 4
 #define BLOCK_HEIGHT 4
-#define BLOCK_WIDTH	4
+#define BLOCK_WIDTH 4
 #define BLOCK_NUM 3
 
 // menu number
@@ -30,7 +30,7 @@
 
 typedef struct node {
 	int score;
-	char name[NAMELEN];
+	char name[NAMELEN + 1];
 	struct node* link;
 } node;
 
