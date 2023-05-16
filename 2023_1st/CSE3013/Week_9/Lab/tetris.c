@@ -547,6 +547,7 @@ void newRank(int score) {
 			prev->link = cur;
 		}
 	}
+	num++;
 
 	writeRankFile();
 }
