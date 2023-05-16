@@ -445,7 +445,7 @@ void createRankList() {
 void rank() {
 	int X = 1;
 	int Y = num;
-	node* curnode = first;
+	node* cur = first;
 
 	clear();
 	printw("1. list ranks from X to Y\n");
@@ -482,13 +482,13 @@ void rank() {
 			printw("------------------------------------\n");
 
 			for (int i = 1; i <= Y; i++) {
-				curnode = curnode->link;
+				cur = cur->link;
 
-				if (curnode == NULL) {
+				if (cur == NULL) {
 					break;
 				}
 				if (i >= X) {
-					printw(" %-19s| %-13d\n", curnode->name, curnode->score);
+					printw(" %-19s| %-13d\n", cur->name, cur->score);
 				}
 			}
 		}
