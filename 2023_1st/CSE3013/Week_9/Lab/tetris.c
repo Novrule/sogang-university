@@ -474,8 +474,9 @@ void rank() {
 		}
 		noecho();
 
-		if (X > Y)
+		if (X > Y) {
 			printw("search failure : no rank in the list\n");
+		}
 		else {
 			printw("        name        |     score     \n");
 			printw("------------------------------------\n");
