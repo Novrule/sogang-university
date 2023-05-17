@@ -1,4 +1,4 @@
-﻿#include "tetris.h"
+#include "tetris.h"
 
 static struct sigaction act, oact;
 
