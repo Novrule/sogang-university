@@ -21,7 +21,6 @@ int main(void) {
 		default: break;
 		}
 	}
-
 	endwin();
 	system("clear");
 
