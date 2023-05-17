@@ -305,6 +305,7 @@ void DrawBlock(int y, int x, int blockID, int blockRotate, char tile);
 void DrawShadow(int y, int x, int blockID, int blockRotate);
 
 void DrawBlockWithFeatures(int y, int x, int blockID, int blockRotate);
+
 /***********************************************************
  *	테트리스 게임을 시작한다.
  *	input	: none
