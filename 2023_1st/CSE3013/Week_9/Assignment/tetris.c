@@ -1,5 +1,5 @@
 ﻿#include "tetris.h"
-a
+
 static struct sigaction act, oact;
 
 int main(void) {
