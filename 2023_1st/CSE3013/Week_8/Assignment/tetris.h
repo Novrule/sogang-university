@@ -15,7 +15,7 @@
 #define NUM_OF_SHAPE 7
 #define NUM_OF_ROTATE 4
 #define BLOCK_HEIGHT 4
-#define BLOCK_WIDTH	4
+#define BLOCK_WIDTH 4
 #define BLOCK_NUM 2
 
 // menu number
@@ -296,6 +296,7 @@ void DrawBlock(int y, int x, int blockID, int blockRotate, char tile);
 void DrawShadow(int y, int x, int blockID, int blockRotate);
 
 void DrawBlockWithFeatures(int y, int x, int blockID, int blockRotate);
+
 /***********************************************************
  *	테트리스 게임을 시작한다.
  *	input	: none
