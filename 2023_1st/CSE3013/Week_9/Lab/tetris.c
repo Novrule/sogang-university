@@ -1,4 +1,4 @@
-﻿#include "tetris.h"
+#include "tetris.h"
 
 static struct sigaction act, oact;
 
@@ -321,7 +321,7 @@ void DrawChange(char f[HEIGHT][WIDTH], int command, int currentBlock, int blockR
 void BlockDown(int sig) {
 	int temp;
 
-	if (CheckToMove(field, nextBlock[0], blockRotate, blockY + 1, blockX)) {
+	if (CheckToMove(field, nextBlock[0], blockRotate, blockY + 1, blockX) == 1) {
 		blockY++;
 		DrawChange(field, KEY_DOWN, nextBlock[0], blockRotate, blockY, blockX);
 	}
