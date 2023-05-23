@@ -644,8 +644,7 @@ void newRank(int score) {
 }
 
 int recommend(tree* root) {
-	int R, X, Y, i, j;
-	int val = 0;
+	int R, X, Y, val;
 	int max = -1;
 	tree* cur = (tree*)malloc(sizeof(tree));
 
@@ -659,7 +658,7 @@ int recommend(tree* root) {
 						cur->field[i][j] = root->field[i][j];
 					}
 				}
-				cur->level = cur->level + 1;
+				cur->level = root->level + 1;
 
 				Y = 0;
 				while (Y < HEIGHT && CheckToMove(cur->field, nextBlock[root->level], R, Y + 1, X) == 1) {
