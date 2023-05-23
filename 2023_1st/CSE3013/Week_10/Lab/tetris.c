@@ -667,7 +667,7 @@ int recommend(tree* root) {
 
 				val += AddBlockToField(cur->field, nextBlock[root->level], R, Y, X);
 				val += DeleteLine(cur->field);
-				if (cur->level < 3) {
+				if (cur->level < MAX_LEVEL) {
 					val += recommend(cur);
 				}
 				
