@@ -671,13 +671,12 @@ int recommend(tree* root) {
 					val += recommend(cur);
 				}
 				
-				if (max <= val) {
+				if (max <= val && root->level == 0) {
 					max = val;
-					if (root->level == 0) {
-						recommendR = R;
-						recommendY = Y;
-						recommendX = X;
-					}
+
+					recommendR = R;
+					recommendY = Y;
+					recommendX = X;
 				}
 			}
 		}
