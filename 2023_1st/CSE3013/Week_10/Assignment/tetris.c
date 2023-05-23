@@ -844,34 +844,13 @@ void recommendedPlay() {
 
 		command = GetCommand();
 		if (command == QUIT) {
-			end = time(NULL);
-			runtime = (double)difftime(end, start);
-			alarm(0);
-			clear();
-			move(2, 3);
-			printw("runningtime     : %10.2f  s", runtime);
-			move(4, 3);
-			printw("score           : %10d     ", score);
-			move(6, 3);
-			printw("time            : %10.2f  s", maketime);
-			move(8, 3);
-			printw("space           : %10.2f KB", (double)size / 1024);
-			move(10, 3);
-			printw("score per time  : %10.2f   ", score / maketime);
-			move(12, 3);
-			printw("score per space : %10.2f   ", score / ((double)size / 1024));
-			refresh();
-			getch();
-
-			return;
+			break;
 		}
-
 	} while (!gameOver);
 
 	end = time(NULL);
 	runtime = (double)difftime(end, start);
 	alarm(0);
-	getch();
 	clear();
 	move(2, 3);
 	printw("runningtime     : %10.2f  s", runtime);
