@@ -647,7 +647,7 @@ int recommend(tree* root) {
 	int R, X, Y, i, j;
 	int val = 0;
 	int max = -1;
-	tree* temp = (tree*)malloc(sizeof(tree));
+	tree* cur = (tree*)malloc(sizeof(tree));
 
 	for (R = 0; R < NUM_OF_ROTATE; R++) {
 		for (X = -3; X <= 13; X++) {
@@ -656,20 +656,20 @@ int recommend(tree* root) {
 
 				for (int i = 0; i < HEIGHT; i++) {
 					for (int j = 0; j < WIDTH; j++) {
-						temp->field[i][j] = root->field[i][j];
+						cur->field[i][j] = root->field[i][j];
 					}
 				}
-				temp->level = root->level + 1;
+				cur->level = cur->level + 1;
 
 				Y = 0;
-				while (Y < HEIGHT && CheckToMove(temp->field, nextBlock[root->level], R, Y + 1, X) == 1) {
+				while (Y < HEIGHT && CheckToMove(cur->field, nextBlock[root->level], R, Y + 1, X) == 1) {
 					Y++;
 				}
 
-				val += AddBlockToField(temp->field, nextBlock[root->level], R, Y, X);
-				val += DeleteLine(temp->field);
-				if (temp->level < 3) {
-					val += recommend(temp);
+				val += AddBlockToField(cur->field, nextBlock[root->level], R, Y, X);
+				val += DeleteLine(cur->field);
+				if (cur->level < 3) {
+					val += recommend(cur);
 				}
 				
 				if (max <= val) {
