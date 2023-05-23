@@ -859,7 +859,7 @@ void recommendedPlay() {
 	move(6, 3);
 	printw("time            : %10.2f  s", maketime);
 	move(8, 3);
-	printw("space           : %10.2f KB", (double)size / 1024);
+	printw("space           : %10.2f kb", (double)size / 1024);
 	move(10, 3);
 	printw("score per time  : %10.2f   ", score / maketime);
 	move(12, 3);
