@@ -673,7 +673,7 @@ int recommend(tree* root) {
 				
 				if (max <= val) {
 					max = val;
-					if (root->level == 0 && recommendY <= Y) {
+					if (root->level == 0) {
 						recommendR = R;
 						recommendY = Y;
 						recommendX = X;
