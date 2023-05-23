@@ -26,6 +26,7 @@
 // 사용자 이름의 길이
 #define NAMELEN 16
 
+#define MAX_LEVEL 3
 #define CHILDREN_MAX 36
 
 typedef struct node {
