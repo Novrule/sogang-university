@@ -847,9 +847,9 @@ void recommendedPlay() {
 			break;
 		}
 	} while (!gameOver);
-
 	end = time(NULL);
 	runtime = (double)difftime(end, start);
+	
 	alarm(0);
 	clear();
 	move(2, 3);
