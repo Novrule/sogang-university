@@ -53,7 +53,10 @@ int main(void) {
 	int group = 0;
 	FILE* fp = fopen("maze.maz", "wt");
 
-	cin >> WIDTH >> HEIGHT;
+	cout << "WIDTH : ";
+	cin >> WIDTH;
+	cout << "HEIGHT : ";
+	cin >> HEIGHT;
 
 	srand((unsigned int)time(NULL));
 
@@ -61,7 +64,7 @@ int main(void) {
 	int* wall = new int[WIDTH - 1];
 
 	write_edge(fp, WIDTH);
-	for (int i = 0; i < WIDTH; i++) {
+	for (int i = 0; i < WIDTH - 1; i++) {
 		wall[i] = rand() % 2;
 		if (wall[i] == 1) {
 			for (int j = temp; j <= i; j++) {
@@ -172,6 +175,8 @@ int main(void) {
 	write_room(fp, WIDTH, wall);
 	write_edge(fp, WIDTH);
 
+	delete[] maze;
+	delete[] wall;
 	fclose(fp);
 
  	return 0;
