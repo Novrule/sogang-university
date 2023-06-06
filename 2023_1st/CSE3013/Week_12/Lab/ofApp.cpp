@@ -152,7 +152,6 @@ void ofApp::appMenuFunction(string title, bool bChecked) {
 
 	if (title == "Show BFS") {
 		doTopmost(bChecked); //Use the checked value directly
-
 	}
 
 	if (title == "Full screen") {
