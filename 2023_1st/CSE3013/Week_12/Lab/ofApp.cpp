@@ -1,5 +1,5 @@
 /*
-ㅁ
+
 	ofxWinMenu basic example - ofApp.cpp
 
 	Example of using ofxWinMenu addon to create a menu for a Microsoft Windows application.
