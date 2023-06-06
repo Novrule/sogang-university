@@ -1,4 +1,4 @@
-﻿all	: tetris.oa
+﻿all	: tetris.o
 	gcc tetris.c -lncurses 
 
 clean:
