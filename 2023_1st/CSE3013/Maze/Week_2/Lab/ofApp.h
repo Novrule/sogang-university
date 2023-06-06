@@ -47,13 +47,13 @@ public:
 	bool DFS();
 	void dfsdraw();
 
-	int HEIGHT; //¹Ì·ÎÀÇ ³ôÀÌ
-	int WIDTH; //¹Ì·ÎÀÇ ³Êºñ
-	char** input; //ÅØ½ºÆ® ÆÄÀÏÀÇ ¸ðµç Á¤º¸¸¦ ´ã´Â ÀÌÂ÷¿ø ¹è¿­ÀÌ´Ù.
-	int** visited; //¹æ¹®¿©ºÎ¸¦ ÀúÀåÇÒ Æ÷ÀÎÅÍ
-	int maze_col; //¹Ì·ÎÄ­ÀÇ ¿­ÀÇ ÀÎµ¦½º¸¦ °¡¸®Å²´Ù.
-	int maze_row; //¹Ì·ÎÄ­ÀÇ ÇàÀÇ ÀÎµ¦½º¸¦ °¡¸®Å²´Ù.
-	int isOpen; //ÆÄÀÏÀÌ ¿­·È´ÂÁö¸¦ ÆÇ´ÜÇÏ´Â º¯¼ö. 0ÀÌ¸é ¾È¿­·È°í 1ÀÌ¸é ¿­·È´Ù.
+	int HEIGHT; //ë¯¸ë¡œì˜ ë†’ì´
+	int WIDTH; //ë¯¸ë¡œì˜ ë„ˆë¹„
+	char** input; //í…ìŠ¤íŠ¸ íŒŒì¼ì˜ ëª¨ë“  ì •ë³´ë¥¼ ë‹´ëŠ” ì´ì°¨ì› ë°°ì—´ì´ë‹¤.
+	int** visited; //ë°©ë¬¸ì—¬ë¶€ë¥¼ ì €ìž¥í•  í¬ì¸í„°
+	int maze_col; //ë¯¸ë¡œì¹¸ì˜ ì—´ì˜ ì¸ë±ìŠ¤ë¥¼ ê°€ë¦¬í‚¨ë‹¤.
+	int maze_row; //ë¯¸ë¡œì¹¸ì˜ í–‰ì˜ ì¸ë±ìŠ¤ë¥¼ ê°€ë¦¬í‚¨ë‹¤.
+	int isOpen; //íŒŒì¼ì´ ì—´ë ¸ëŠ”ì§€ë¥¼ íŒë‹¨í•˜ëŠ” ë³€ìˆ˜. 0ì´ë©´ ì•ˆì—´ë ¸ê³  1ì´ë©´ ì—´ë ¸ë‹¤.
 
 	//Menu
 	ofxWinMenu* menu; //Menu object
