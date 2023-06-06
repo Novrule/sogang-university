@@ -414,7 +414,7 @@ void ofApp::freeMemory() {
 	delete[] visited;
 }
 
-void ofApp::DFS() { //DFSŽ���� �ϴ� �Լ�
+void ofApp::DFS() { //DFSÅ½»öÀ» ÇÏ´Â ÇÔ¼ö
 	int next_col, next_row;
 	int num = 1;
 	isdfs = true;
