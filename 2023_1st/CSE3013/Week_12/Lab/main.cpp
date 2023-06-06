@@ -1,4 +1,4 @@
-/*ㅁ
+/*
 
 	ofxWinMenu basic example
 
