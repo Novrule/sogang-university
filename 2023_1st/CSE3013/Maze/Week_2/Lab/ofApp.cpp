@@ -407,13 +407,13 @@ void ofApp::freeMemory() {
 	delete[] input;
 }
 
-bool ofApp::DFS() { //DFSÅ½»öÀ» ÇÏ´Â ÇÔ¼ö
+bool ofApp::DFS() { //DFSíƒìƒ‰ì„ í•˜ëŠ” í•¨ìˆ˜
 	//TO DO
-	//DFSÅ½»öÀ» ÇÏ´Â ÇÔ¼ö ( 3ÁÖÂ÷)
+	//DFSíƒìƒ‰ì„ í•˜ëŠ” í•¨ìˆ˜ ( 3ì£¼ì°¨)
 	return true;
 }
 void ofApp::dfsdraw() {
 	//TO DO 
-	//DFS¸¦ ¼öÇàÇÑ °á°ú¸¦ ±×¸°´Ù. (3ÁÖÂ÷ ³»¿ë)
+	//DFSë¥¼ ìˆ˜í–‰í•œ ê²°ê³¼ë¥¼ ê·¸ë¦°ë‹¤. (3ì£¼ì°¨ ë‚´ìš©)
 }
 
