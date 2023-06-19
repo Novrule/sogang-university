@@ -1,4 +1,4 @@
-#include "ofApp.h"ㅁ
+#include "ofApp.h"
 #include <iostream>
 #include <algorithm>
 #include <random>
