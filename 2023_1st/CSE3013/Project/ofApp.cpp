@@ -6,7 +6,7 @@
 #include <queue>
 
 //--------------------------------------------------------------
-void ofApp::setup() {ㅁ
+void ofApp::setup() {
 	ofSetFrameRate(30); // 초당 프레임을 설정해준다.
 	ofBackground(255, 255, 255); // 배경의 색을 흰색으로 설정해준다.
 
