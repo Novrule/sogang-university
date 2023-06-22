@@ -189,10 +189,10 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 }
 
 void ofApp::input() { // 미로의 크기와 난이도를 입력받아주는 함수
-	printf("Height? : "); // 미로의 가로, 세로의 방 갯수를 받아준다.
-	scanf("%d", &HEIGHT);
-	printf("Width? : ");
+	printf("Width? : "); // 미로의 가로, 세로의 방 갯수를 받아준다.
 	scanf("%d", &WIDTH);
+	printf("Height? : ");
+	scanf("%d", &HEIGHT);
 	HEIGHT = 2 * HEIGHT + 1; // 벽을 포함한 미로의 실제 크기를 계산해준다.
 	WIDTH = 2 * WIDTH + 1;
 
