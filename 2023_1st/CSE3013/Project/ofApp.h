@@ -4,11 +4,11 @@
 
 class ofApp : public ofBaseApp{
 public:
-	void setup(); // ì‹œìž‘ ì„¤ì •ì„ í•´ì£¼ëŠ” í•¨ìˆ˜
+	void setup(); // ½ÃÀÛ ¼³Á¤À» ÇØÁÖ´Â ÇÔ¼ö
 	void update();
-	void draw(); // ë¯¸ë¡œì™€ í”Œë ˆì´ì–´ë¥¼ ê·¸ë ¤ì£¼ëŠ” í•¨ìˆ˜
-	void keyPressed(int key); // í‚¤ê°€ í´ë¦­ì´ ë˜ì—ˆì„ ë•Œ ìž‘ë™í•˜ëŠ” í•¨ìˆ˜
-	void keyReleased(int key); // í‚¤ë¥¼ í´ë¦­í–ˆë‹¤ ë–¼ì—ˆì„ ë•Œ ìž‘ë™í•˜ëŠ” í•¨ìˆ˜
+	void draw(); // ¹Ì·Î¿Í ÇÃ·¹ÀÌ¾î¸¦ ±×·ÁÁÖ´Â ÇÔ¼ö
+	void keyPressed(int key); // Å°°¡ Å¬¸¯ÀÌ µÇ¾úÀ» ¶§ ÀÛµ¿ÇÏ´Â ÇÔ¼ö
+	void keyReleased(int key); // Å°¸¦ Å¬¸¯Çß´Ù ¶¼¾úÀ» ¶§ ÀÛµ¿ÇÏ´Â ÇÔ¼ö
 	void mouseMoved(int x, int y);
 	void mouseDragged(int x, int y, int button);
 	void mousePressed(int x, int y, int button);
@@ -18,27 +18,27 @@ public:
 	void windowResized(int w, int h);
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
-	void input(); // ë¯¸ë¡œì˜ í¬ê¸°ì™€ ë‚œì´ë„ë¥¼ ìž…ë ¥ë°›ì•„ì£¼ëŠ” í•¨ìˆ˜
-	void init(); // ë¯¸ë¡œë¥¼ ì €ìž¥í•  ë°°ì—´ì„ ë™ì  í• ë‹¹í•´ì£¼ê³  ì´ˆê¸°í™”í•´ì£¼ëŠ” í•¨ìˆ˜
-	void randDir(); // ë¯¸ë¡œë¥¼ ìƒì„±í•  ë•Œ ì‚¬ìš©í•  dirë°°ì—´ì„ ëžœë¤ìœ¼ë¡œ ì„žì–´ì£¼ëŠ” í•¨ìˆ˜
-	void makeMaze(); // ìž…ë ¥ë°›ì€ ë¯¸ë¡œì˜ í¬ê¸°ë¥¼ ë°”íƒ•ìœ¼ë¡œ ëžœë¤í•œ ë¯¸ë¡œë¥¼ ìƒì„±í•´ì£¼ëŠ” í•¨ìˆ˜
-	void mazeSolve(); // ëžœë¤ìœ¼ë¡œ ë§Œë“  ë¯¸ë¡œë¥¼ í†µê³¼í•˜ê¸° ìœ„í•´ í•„ìš”í•œ ì›€ì§ìž„ì˜ ìµœì†Œê°’ì„ êµ¬í•´ì£¼ëŠ” í•¨ìˆ˜
-	void freeMemory(); // ë™ì  í• ë‹¹í•œ ë©”ëª¨ë¦¬ë¥¼ í•´ì œí•´ì£¼ëŠ” í•¨ìˆ˜
-	void gameStart(); // ê²Œìž„ì„ ì‹œìž‘í•˜ê¸° ìœ„í•´ í•„ìš”í•œ ê²ƒë“¤ì„ í•´ì£¼ëŠ” í•¨ìˆ˜
-	void drawShadow(); // ëª¨ë“œì— ë”°ë¼ ë¯¸ë¡œì— ê·¸ë¦¼ìžë¥¼ ê·¸ë ¤ì£¼ëŠ” í•¨ìˆ˜
-	void gameClear(); // ê²Œìž„ì„ ê¹¼ì„ ë•Œ í•„ìš”í•œ ê²ƒë“¤ì„ í•´ì£¼ëŠ” í•¨ìˆ˜
+	void input(); // ¹Ì·ÎÀÇ Å©±â¿Í ³­ÀÌµµ¸¦ ÀÔ·Â¹Þ¾ÆÁÖ´Â ÇÔ¼ö
+	void init(); // ¹Ì·Î¸¦ ÀúÀåÇÒ ¹è¿­À» µ¿Àû ÇÒ´çÇØÁÖ°í º¯¼öµéÀ» ÃÊ±âÈ­ÇØÁÖ´Â ÇÔ¼ö
+	void randDir(); // ¹Ì·Î¸¦ »ý¼ºÇÒ ¶§ »ç¿ëÇÒ dir¹è¿­À» ·£´ýÀ¸·Î ¼¯¾îÁÖ´Â ÇÔ¼ö
+	void makeMaze(); // ÀÔ·Â¹ÞÀº ¹Ì·ÎÀÇ Å©±â¸¦ ¹ÙÅÁÀ¸·Î ·£´ýÇÑ ¹Ì·Î¸¦ »ý¼ºÇØÁÖ´Â ÇÔ¼ö
+	void mazeSolve(); // ·£´ýÀ¸·Î ¸¸µç ¹Ì·Î¸¦ Åë°úÇÏ±â À§ÇØ ÇÊ¿äÇÑ ¿òÁ÷ÀÓÀÇ ÃÖ¼Ò°ªÀ» ±¸ÇØÁÖ´Â ÇÔ¼ö
+	void freeMemory(); // µ¿Àû ÇÒ´çÇÑ ¸Þ¸ð¸®¸¦ ÇØÁ¦ÇØÁÖ´Â ÇÔ¼ö
+	void gameStart(); // °ÔÀÓÀ» ½ÃÀÛÇÏ±â À§ÇØ ÇÊ¿äÇÑ °ÍµéÀ» ÇØÁÖ´Â ÇÔ¼ö
+	void drawShadow(); // ¸ðµå¿¡ µû¶ó ¹Ì·Î¿¡ ±×¸²ÀÚ¸¦ ±×·ÁÁÖ´Â ÇÔ¼ö
+	void gameClear(); // °ÔÀÓÀ» ²£À» ¶§ ÇÊ¿äÇÑ °ÍµéÀ» ÇØÁÖ´Â ÇÔ¼ö
 
-	int HEIGHT, WIDTH; // ë¯¸ë¡œì˜ í¬ê¸°ë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
-	int mode; // ë‚œì´ë„ë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
-	int ans; // ë¯¸ë¡œë¥¼ í†µê³¼í•˜ê¸° ìœ„í•´ í•„ìš”í•œ ì›€ì§ìž„ì˜ ìµœì†Œê°’ì„ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
-	int px, py; // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ë³€ìˆ˜
-	int cnt; // í”Œë ˆì´ì–´ê°€ ì›€ì§ì¸ íšŸìˆ˜ë¥¼ ì €ìž¥í•˜ëŠ” ë³€ìˆ˜
-	int sx, sy; // í”Œë ˆì´ì–´ê°€ ì €ìž¥í•œ ìœ„ì¹˜ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ë³€ìˆ˜
-	int** maze; // ë¯¸ë¡œë¥¼ ì €ìž¥í•˜ëŠ” ë°°ì—´
-	int dir[4][2] = { {1, 0}, {-1, 0}, {0, 1}, {0,-1} }; // ë¯¸ë¡œë¥¼ ìƒì„±í•  ë•Œ DFSë¥¼ ì‚¬ìš©í•˜ëŠ”ë°, ì´ ë•Œ ì´ë™í•  ë°©í–¥ì„ ëª¨ì•„ë†“ì€ ë°°ì—´
-	int dx[4] = { 1, -1, 0, 0 }; // ë¯¸ë¡œì—ì„œ ê¸¸ì„ ì°¾ì„ ë•Œ BFSë¥¼ ì‚¬ìš©í•˜ëŠ”ë° ì´ ë•Œ xì¶•ìœ¼ë¡œ ì´ë™í•  ë°©í–¥ì„ ëª¨ì•„ë†“ì€ ë°°ì—´
-	int dy[4] = { 0, 0, 1, -1 }; // ë¯¸ë¡œì—ì„œ ê¸¸ì„ ì°¾ì„ ë•Œ BFSë¥¼ ì‚¬ìš©í•˜ëŠ”ë° ì´ ë•Œ yì¶•ìœ¼ë¡œ ì´ë™í•  ë°©í–¥ì„ ëª¨ì•„ë†“ì€ ë°°ì—´
-	int game_flag; // ê²Œìž„ì´ ì‹œìž‘ë˜ì—ˆëŠ”ì§€ ì•Šì•˜ëŠ”ì§€ë¥¼ ë‚˜íƒ€ë‚´ëŠ” í”Œëž˜ê·¸
-	int key_flag; // ì´ë¯¸ í‚¤ê°€ ëˆŒë ¤ì„œ ìž‘ì—… ì¤‘ì´ë¯€ë¡œ ë‹¤ë¥¸ ìž‘ì—…ì´ ë¶ˆê°€ëŠ¥í•œì§€ í‚¤ê°€ ëˆŒë¦¬ì§€ ì•Šì•„ ë‹¤ë¥¸ ìž‘ì—…ì´ ê°€ëŠ¥í•œì§€ ë‚˜íƒ€ë‚´ëŠ” í”Œëž˜ê·¸
-	int save_flag; // ìœ„ì¹˜ë¥¼ ì €ìž¥í–ˆëŠ”ì§€ í•˜ì§€ ì•Šì•˜ëŠ”ì§€ë¥¼ ë‚˜íƒ€ë‚´ëŠ” í”Œëž˜ê·¸
+	int HEIGHT, WIDTH; // ¹Ì·ÎÀÇ Å©±â¸¦ ÀúÀåÇÏ´Â º¯¼ö
+	int mode; // ³­ÀÌµµ¸¦ ÀúÀåÇÏ´Â º¯¼ö
+	int ans; // ¹Ì·Î¸¦ Åë°úÇÏ±â À§ÇØ ÇÊ¿äÇÑ ¿òÁ÷ÀÓÀÇ ÃÖ¼Ò°ªÀ» ÀúÀåÇÏ´Â º¯¼ö
+	int px, py; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ³ªÅ¸³»´Â º¯¼ö
+	int cnt; // ÇÃ·¹ÀÌ¾î°¡ ¿òÁ÷ÀÎ È½¼ö¸¦ ÀúÀåÇÏ´Â º¯¼ö
+	int sx, sy; // ÇÃ·¹ÀÌ¾î°¡ ÀúÀåÇÑ À§Ä¡¸¦ ³ªÅ¸³»´Â º¯¼ö
+	int** maze; // ¹Ì·Î¸¦ ÀúÀåÇÏ´Â ¹è¿­
+	int dir[4][2] = { {1, 0}, {-1, 0}, {0, 1}, {0,-1} }; // ¹Ì·Î¸¦ »ý¼ºÇÒ ¶§ DFS¸¦ »ç¿ëÇÏ´Âµ¥, ÀÌ ¶§ ÀÌµ¿ÇÒ ¹æÇâÀ» ¸ð¾Æ³õÀº ¹è¿­
+	int dx[4] = { 1, -1, 0, 0 }; // ¹Ì·Î¿¡¼­ ±æÀ» Ã£À» ¶§ BFS¸¦ »ç¿ëÇÏ´Âµ¥ ÀÌ ¶§ xÃàÀ¸·Î ÀÌµ¿ÇÒ ¹æÇâÀ» ¸ð¾Æ³õÀº ¹è¿­
+	int dy[4] = { 0, 0, 1, -1 }; // ¹Ì·Î¿¡¼­ ±æÀ» Ã£À» ¶§ BFS¸¦ »ç¿ëÇÏ´Âµ¥ ÀÌ ¶§ yÃàÀ¸·Î ÀÌµ¿ÇÒ ¹æÇâÀ» ¸ð¾Æ³õÀº ¹è¿­
+	int game_flag; // °ÔÀÓÀÌ ½ÃÀÛµÇ¾ú´ÂÁö ¾Ê¾Ò´ÂÁö¸¦ ³ªÅ¸³»´Â ÇÃ·¡±×
+	int key_flag; // ÀÌ¹Ì Å°°¡ ´­·Á¼­ ÀÛ¾÷ ÁßÀÌ¹Ç·Î ´Ù¸¥ ÀÛ¾÷ÀÌ ºÒ°¡´ÉÇÑÁö Å°°¡ ´­¸®Áö ¾Ê¾Æ ´Ù¸¥ ÀÛ¾÷ÀÌ °¡´ÉÇÑÁö ³ªÅ¸³»´Â ÇÃ·¡±×
+	int save_flag; // À§Ä¡¸¦ ÀúÀåÇß´ÂÁö ÇÏÁö ¾Ê¾Ò´ÂÁö¸¦ ³ªÅ¸³»´Â ÇÃ·¡±×
 };
