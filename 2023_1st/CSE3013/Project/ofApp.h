@@ -1,4 +1,4 @@
-#pragma onceㅁ
+#pragma once
 
 #include "ofMain.h"
 
