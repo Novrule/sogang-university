@@ -233,12 +233,12 @@ void ofApp::init() { // 미로를 저장할 배열을 동적 할당해주고 변수들을 초기화해주
 void ofApp::randDir() { // 미로를 생성할 때 사용할 dir배열을 랜덤으로 섞어주는 함수
 	int a, b, cur;
 
-	random_device rd; // 랜덤으로 숫자를 뽑기 위한 seed를 생성해준다.
-	mt19937 gen(rd());
-	uniform_int_distribution<int> dis(0, 3); // 0부터 3까지 랜덤으로 추첨해준다.
+	random_device rd; // 랜덤으로 숫자를 뽑기 위한 seed를 저장하는 변수다.
+	mt19937 gen(rd()); // 랜덤으로 생성된 seed를 저장해준다.
+	uniform_int_distribution<int> dis(0, 3); // 생성 범위를 0부터 3까지로 지정해준다.
 
 	for (int i = 0; i < 4; i++) { // 0부터 3까지 dir배열을 돌면서 랜덤으로 선택된 index에 있는 방향과 현재의 index에 있는 방향을 바꿔준다.
-		cur = dis(gen);
+		cur = dis(gen); // seed를 이용해 0부터 3까지 랜덤으로 뽑은 숫자를 저장해준다.
 
 		a = dir[i][0];
 		b = dir[i][1];
