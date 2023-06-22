@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
-#include <stack>a
+#include <stack>
 #include <queue>
 
 //--------------------------------------------------------------
