@@ -6,11 +6,11 @@
 #include <queue>
 
 //--------------------------------------------------------------
-void ofApp::setup() {
-	ofSetFrameRate(30); // ì´ˆë‹¹ í”„ë ˆìž„ì„ ì„¤ì •í•´ì¤€ë‹¤.
-	ofBackground(255, 255, 255); // ë°°ê²½ì˜ ìƒ‰ì„ í°ìƒ‰ìœ¼ë¡œ ì„¤ì •í•´ì¤€ë‹¤.
+void ofApp::setup() { // ½ÃÀÛ ¼³Á¤À» ÇØÁÖ´Â ÇÔ¼ö
+	ofSetFrameRate(30); // ÃÊ´ç ÇÁ·¹ÀÓÀ» ¼³Á¤ÇØÁØ´Ù.
+	ofBackground(255, 255, 255); // ¹è°æÀÇ »öÀ» Èò»öÀ¸·Î ¼³Á¤ÇØÁØ´Ù.
 
-	game_flag = 0; // í”Œëž˜ê·¸ë“¤ì„ ì´ˆê¸°í™”í•´ì¤€ë‹¤.
+	game_flag = 0; // ÇÃ·¡±×µéÀ» ÃÊ±âÈ­ÇØÁØ´Ù.
 	key_flag = 0;
 }
 
@@ -20,125 +20,125 @@ void ofApp::update() {
 }
 
 //--------------------------------------------------------------
-void ofApp::draw() {
-	int area = 10; // ë°©ì˜ í¬ê¸°ë¥¼ 10ìœ¼ë¡œ ì„¤ì •í•´ì¤€ë‹¤.
+void ofApp::draw() { // ¹Ì·Î¿Í ÇÃ·¹ÀÌ¾î¸¦ ±×·ÁÁÖ´Â ÇÔ¼ö
+	int area = 10; // ¹æÀÇ Å©±â¸¦ 10À¸·Î ¼³Á¤ÇØÁØ´Ù.
 
-	if (game_flag == 1) { // ê²Œìž„ì´ ì‹œìž‘ë˜ì—ˆë‹¤ë©´ ê·¸ë ¤ì¤€ë‹¤.
-		drawShadow(); // ë¯¸ë¡œì— ê·¸ë¦¼ìžë¥¼ ë¨¼ì € ê·¸ë ¤ì¤€ë‹¤.
+	if (game_flag == 1) { // °ÔÀÓÀÌ ½ÃÀÛµÇ¾ú´Ù¸é ±×·ÁÁØ´Ù.
+		drawShadow(); // ¹Ì·Î¿¡ ±×¸²ÀÚ¸¦ ¸ÕÀú ±×·ÁÁØ´Ù.
 
-		ofSetColor(0); // ì„ ì˜ ìƒ‰ì„ ê²€ì •ìƒ‰ìœ¼ë¡œ ì„¤ì •í•´ì¤€ë‹¤.
-		ofSetLineWidth(10); // ì„ ì˜ êµµê¸°ë¥¼ 10ìœ¼ë¡œ ì„¤ì •í•´ì¤€ë‹¤.
-		for (int i = 0; i < HEIGHT; i += 2) { // ë¯¸ë¡œë¥¼ ì €ìž¥í•œ ë°°ì—´ì„ ëŒë©´ì„œ ì„ ì„ ê·¸ì–´ì•¼ í•˜ëŠ” ê³³ì„ ì°¾ì•„ì¤€ë‹¤.
+		ofSetColor(0); // ¼±ÀÇ »öÀ» °ËÁ¤»öÀ¸·Î ¼³Á¤ÇØÁØ´Ù.
+		ofSetLineWidth(10); // ¼±ÀÇ ±½±â¸¦ 10À¸·Î ¼³Á¤ÇØÁØ´Ù.
+		for (int i = 0; i < HEIGHT; i += 2) { // ¹Ì·Î¸¦ ÀúÀåÇÑ ¹è¿­À» µ¹¸é¼­ ¼±À» ±×¾î¾ß ÇÏ´Â °÷À» Ã£¾ÆÁØ´Ù.
 			for (int j = 0; j < WIDTH; j += 2) {
 				if (i != HEIGHT - 1) {
-					if (maze[i][j] == -1 && maze[i + 1][j] == -1) { // í˜„ìž¬ ìœ„ì¹˜ê°€ ë²½ì´ê³  ë°”ë¡œ ì˜¤ë¥¸ìª½ë„ ë²½ì´ë¼ë©´
-						ofDrawLine(j * area + 5, i * area, j * area + 5, (i + 2) * area + 10); // ë²½ì„ ê·¸ë ¤ì¤€ë‹¤.
+					if (maze[i][j] == -1 && maze[i + 1][j] == -1) { // ÇöÀç À§Ä¡°¡ º®ÀÌ°í ¹Ù·Î ¿À¸¥ÂÊµµ º®ÀÌ¶ó¸é
+						ofDrawLine(j * area + 5, i * area, j * area + 5, (i + 2) * area + 10); // º®À» ±×·ÁÁØ´Ù.
 					}
 				}
 				if (j != WIDTH - 1) {
-					if (maze[i][j] == -1 && maze[i][j + 1] == -1) { //í˜„ìž¬ ìœ„ì¹˜ê°€ ë²½ì´ê³  ë°”ë¡œ ë°‘ë„ ë²½ì´ë¼ë©´
-						ofDrawLine(j * area, i * area + 5, (j + 2) * area + 10, i * area + 5); // ë²½ì„ ê·¸ë ¤ì¤€ë‹¤
+					if (maze[i][j] == -1 && maze[i][j + 1] == -1) { //ÇöÀç À§Ä¡°¡ º®ÀÌ°í ¹Ù·Î ¹Øµµ º®ÀÌ¶ó¸é
+						ofDrawLine(j * area, i * area + 5, (j + 2) * area + 10, i * area + 5); // º®À» ±×·ÁÁØ´Ù
 					}
 				}
 			}
 		}
 
-		ofSetColor(0); // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ì™€ ì €ìž¥í•œ ìœ„ì¹˜ë¥¼ ê²€ì •ìƒ‰ìœ¼ë¡œ ì„¤ì •í•œë‹¤.
-		if (save_flag == 1) { // ë§Œì•½ ê²Œìž„ ì¤‘ ìœ„ì¹˜ë¥¼ ì €ìž¥í–ˆë‹¤ë©´
-			ofDrawCircle(sx * area + 5, sy * area + 5, 5); // ì €ìž¥í•œ ìœ„ì¹˜ë¥¼ ê·¸ë ¤ì¤€ë‹¤.
+		ofSetColor(0); // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¿Í ÀúÀåÇÑ À§Ä¡¸¦ °ËÁ¤»öÀ¸·Î ¼³Á¤ÇÑ´Ù.
+		if (save_flag == 1) { // ¸¸¾à °ÔÀÓ Áß À§Ä¡¸¦ ÀúÀåÇß´Ù¸é
+			ofDrawCircle(sx * area + 5, sy * area + 5, 5); // ÀúÀåÇÑ À§Ä¡¸¦ ±×·ÁÁØ´Ù.
 		}
-		ofDrawCircle(px * area + 5, py * area + 5, 5); // í”Œë ˆì´ì–´ë¥¼ ê·¸ë ¤ì¤€ë‹¤.
+		ofDrawCircle(px * area + 5, py * area + 5, 5); // ÇÃ·¹ÀÌ¾î¸¦ ±×·ÁÁØ´Ù.
 
-		if (px == WIDTH - 2 && py == HEIGHT - 2) { // ë§Œì•½ ë„ì°©ì§€ì ì— ë„ì°©í–ˆë‹¤ë©´ ê²Œìž„ì„ ê¹¬ ê²ƒì´ë¯€ë¡œ
-			gameClear(); // ê²Œìž„ì„ ê¹¼ì„ ë•Œ í•„ìš”í•œ ê²ƒë“¤ì„ í•´ì¤€ë‹¤.
+		if (px == WIDTH - 2 && py == HEIGHT - 2) { // ¸¸¾à µµÂøÁöÁ¡¿¡ µµÂøÇß´Ù¸é °ÔÀÓÀ» ±ü °ÍÀÌ¹Ç·Î
+			gameClear(); // °ÔÀÓÀ» ²£À» ¶§ ÇÊ¿äÇÑ °ÍµéÀ» ÇØÁØ´Ù.
 		}
 	}
 }
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(int key) {
-	if (key == 's') { // së¥¼ ëˆŒë €ê³ 
-		if (game_flag == 0 && key_flag == 0) { // ê²Œìž„ ì¤‘ì´ ì•„ë‹ˆë©´ì„œ ë‹¤ë¥¸ ìž‘ì—…ì´ ì§„í–‰ ì¤‘ì´ ì•„ë‹ˆë¼ë©´
-			key_flag = 1; // ìž‘ì—… ì¤‘ìœ¼ë¡œ í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
-			gameStart(); // ê²Œìž„ì„ ì‹œìž‘í•  ë•Œ í•„ìš”í•œ ê²ƒë“¤ì„ í•´ì¤€ë‹¤.
-			key_flag = 0; // ìž‘ì—…ì´ ëë‚¬ë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+void ofApp::keyPressed(int key) { // Å°°¡ Å¬¸¯ÀÌ µÇ¾úÀ» ¶§ ÀÛµ¿ÇÏ´Â ÇÔ¼ö
+	if (key == 's') { // s¸¦ ´­·¶°í
+		if (game_flag == 0 && key_flag == 0) { // °ÔÀÓ ÁßÀÌ ¾Æ´Ï¸é¼­ ´Ù¸¥ ÀÛ¾÷ÀÌ ÁøÇà ÁßÀÌ ¾Æ´Ï¶ó¸é
+			key_flag = 1; // ÀÛ¾÷ ÁßÀ¸·Î Ç¥½Ã¸¦ ÇØÁØ´Ù.
+			gameStart(); // °ÔÀÓÀ» ½ÃÀÛÇÒ ¶§ ÇÊ¿äÇÑ °ÍµéÀ» ÇØÁØ´Ù.
+			key_flag = 0; // ÀÛ¾÷ÀÌ ³¡³µ´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 		}
 	}
 
-	if (key == 'r') { // rì„ ëˆŒë €ê³ 
-		if (key_flag == 0) { // ë‹¤ë¥¸ ìž‘ì—…ì´ ì§„í–‰ ì¤‘ì´ ì•„ë‹ˆë¼ë©´
-			game_flag = 0; // ê²Œìž„ ì¤‘ì´ ì•„ë‹ˆë¼ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
-			key_flag = 1; // ìž‘ì—… ì¤‘ìœ¼ë¡œ í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
-			freeMemory(); // ë™ì  í• ë‹¹í•œ ë©”ëª¨ë¦¬ë¥¼ í•´ì œí•´ì¤€ë‹¤.
-			gameStart(); // ê²Œìž„ì„ ì‹œìž‘í•  ë•Œ í•„ìš”í•œ ê²ƒë“¤ì„ í•´ì¤€ë‹¤.
-			key_flag = 0; // ìž‘ì—…ì´ ëë‚¬ë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+	if (key == 'r') { // rÀ» ´­·¶°í
+		if (key_flag == 0) { // ´Ù¸¥ ÀÛ¾÷ÀÌ ÁøÇà ÁßÀÌ ¾Æ´Ï¶ó¸é
+			game_flag = 0; // °ÔÀÓ ÁßÀÌ ¾Æ´Ï¶ó°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
+			key_flag = 1; // ÀÛ¾÷ ÁßÀ¸·Î Ç¥½Ã¸¦ ÇØÁØ´Ù.
+			freeMemory(); // µ¿Àû ÇÒ´çÇÑ ¸Þ¸ð¸®¸¦ ÇØÁ¦ÇØÁØ´Ù.
+			gameStart(); // °ÔÀÓÀ» ½ÃÀÛÇÒ ¶§ ÇÊ¿äÇÑ °ÍµéÀ» ÇØÁØ´Ù.
+			key_flag = 0; // ÀÛ¾÷ÀÌ ³¡³µ´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 		}
 	}
 
-	if (key == 'q') { // që¥¼ ëˆŒë €ê³ 
-		if (key_flag == 0) { // ë‹¤ë¥¸ ìž‘ì—…ì´ ì§„í–‰ ì¤‘ì´ ì•„ë‹ˆë¼ë©´
-			game_flag = 0; // ê²Œìž„ ì¤‘ì´ ì•„ë‹ˆë¼ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
-			key_flag = 1; // ìž‘ì—… ì¤‘ìœ¼ë¡œ í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+	if (key == 'q') { // q¸¦ ´­·¶°í
+		if (key_flag == 0) { // ´Ù¸¥ ÀÛ¾÷ÀÌ ÁøÇà ÁßÀÌ ¾Æ´Ï¶ó¸é
+			game_flag = 0; // °ÔÀÓ ÁßÀÌ ¾Æ´Ï¶ó°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
+			key_flag = 1; // ÀÛ¾÷ ÁßÀ¸·Î Ç¥½Ã¸¦ ÇØÁØ´Ù.
 			printf("Good Bye!\n");
-			freeMemory(); // ë™ì  í• ë‹¹í•œ ë©”ëª¨ë¦¬ë¥¼ í•´ì œí•´ì¤€ë‹¤.
-			_Exit(0); // í”„ë¡œê·¸ëž¨ì„ ì¢…ë£Œí•´ì¤€ë‹¤.
+			freeMemory(); // µ¿Àû ÇÒ´çÇÑ ¸Þ¸ð¸®¸¦ ÇØÁ¦ÇØÁØ´Ù.
+			_Exit(0); // ÇÁ·Î±×·¥À» Á¾·áÇØÁØ´Ù.
 		}
 	}
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key) {
-	if (key == OF_KEY_RIGHT) { // ì˜¤ë¥¸ìª½ ë°©í–¥í‚¤ë¥¼ ëˆŒë €ë‹¤ ë—ê³ 
-		if (game_flag == 1 && px + 2 < WIDTH) { // ê²Œìž„ ì¤‘ì´ë©´ì„œ í”Œë ˆì´ì–´ê°€ ë§µì˜ ì˜¤ë¥¸ìª½ ëì— ìžˆì§€ ì•Šê³ 
-			if (maze[py][px + 1] != -1) { // í”Œë ˆì´ì–´ì˜ ì˜¤ë¥¸ìª½ì— ë²½ì´ ì—†ë‹¤ë©´
-				px += 2; // í”Œë ˆì´ì–´ë¥¼ ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™ì‹œì¼œ ì¤€ë‹¤.
-				cnt++; // í”Œë ˆì´ì–´ê°€ ì´ë™í•œ íšŸìˆ˜ì— 1ì„ ë”í•´ì¤€ë‹¤.
+void ofApp::keyReleased(int key) { // Å°¸¦ Å¬¸¯Çß´Ù ¶¼¾úÀ» ¶§ ÀÛµ¿ÇÏ´Â ÇÔ¼ö
+	if (key == OF_KEY_RIGHT) { // ¿À¸¥ÂÊ ¹æÇâÅ°¸¦ ´­·¶´Ù ¶Ã°í
+		if (game_flag == 1 && px + 2 < WIDTH) { // °ÔÀÓ ÁßÀÌ¸é¼­ ÇÃ·¹ÀÌ¾î°¡ ¸ÊÀÇ ¿À¸¥ÂÊ ³¡¿¡ ÀÖÁö ¾Ê°í
+			if (maze[py][px + 1] != -1) { // ÇÃ·¹ÀÌ¾îÀÇ ¿À¸¥ÂÊ¿¡ º®ÀÌ ¾ø´Ù¸é
+				px += 2; // ÇÃ·¹ÀÌ¾î¸¦ ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿½ÃÄÑ ÁØ´Ù.
+				cnt++; // ÇÃ·¹ÀÌ¾î°¡ ÀÌµ¿ÇÑ È½¼ö¿¡ 1À» ´õÇØÁØ´Ù.
 			}
 		}
 	}
 
-	if (key == OF_KEY_LEFT) { // ì™¼ìª½ ë°©í–¥í‚¤ë¥¼ ëˆŒë €ë‹¤ ë—ê³ 
-		if (game_flag == 1 && px - 2 >= 0) { // ê²Œìž„ ì¤‘ì´ë©´ì„œ í”Œë ˆì´ì–´ê°€ ë§µì˜ ì™¼ìª½ ëì— ìžˆì§€ ì•Šê³ 
-			if (maze[py][px - 1] != -1) { // í”Œë ˆì´ì–´ì˜ ì™¼ìª½ì— ë²½ì´ ì—†ë‹¤ë©´
-				px -= 2; // í”Œë ˆì´ì–´ë¥¼ ì™¼ìª½ìœ¼ë¡œ ì´ë™ì‹œì¼œ ì¤€ë‹¤.
-				cnt++; // í”Œë ˆì´ì–´ê°€ ì´ë™í•œ íšŸìˆ˜ì— 1ì„ ë”í•´ì¤€ë‹¤.
+	if (key == OF_KEY_LEFT) { // ¿ÞÂÊ ¹æÇâÅ°¸¦ ´­·¶´Ù ¶Ã°í
+		if (game_flag == 1 && px - 2 >= 0) { // °ÔÀÓ ÁßÀÌ¸é¼­ ÇÃ·¹ÀÌ¾î°¡ ¸ÊÀÇ ¿ÞÂÊ ³¡¿¡ ÀÖÁö ¾Ê°í
+			if (maze[py][px - 1] != -1) { // ÇÃ·¹ÀÌ¾îÀÇ ¿ÞÂÊ¿¡ º®ÀÌ ¾ø´Ù¸é
+				px -= 2; // ÇÃ·¹ÀÌ¾î¸¦ ¿ÞÂÊÀ¸·Î ÀÌµ¿½ÃÄÑ ÁØ´Ù.
+				cnt++; // ÇÃ·¹ÀÌ¾î°¡ ÀÌµ¿ÇÑ È½¼ö¿¡ 1À» ´õÇØÁØ´Ù.
 			}
 		}
 	}
 
-	if (key == OF_KEY_DOWN) { // ì•„ëž˜ìª½ ë°©í–¥í‚¤ë¥¼ ëˆŒë €ë‹¤ ë—ê³ 
-		if (game_flag == 1 && py + 2 < HEIGHT) { // ê²Œìž„ ì¤‘ì´ë©´ì„œ í”Œë ˆì´ì–´ê°€ ë§µì˜ ì•„ëž˜ìª½ ëì— ìžˆì§€ ì•Šê³ 
-			if (maze[py + 1][px] != -1) { // í”Œë ˆì´ì–´ì˜ ì•„ëž˜ìª½ì— ë²½ì´ ì—†ë‹¤ë©´
-				py += 2; // í”Œë ˆì´ì–´ë¥¼ ì•„ëž˜ìª½ìœ¼ë¡œ ì´ë™ì‹œì¼œ ì¤€ë‹¤.
-				cnt++; // í”Œë ˆì´ì–´ê°€ ì´ë™í•œ íšŸìˆ˜ì— 1ì„ ë”í•´ì¤€ë‹¤.
+	if (key == OF_KEY_DOWN) { // ¾Æ·¡ÂÊ ¹æÇâÅ°¸¦ ´­·¶´Ù ¶Ã°í
+		if (game_flag == 1 && py + 2 < HEIGHT) { // °ÔÀÓ ÁßÀÌ¸é¼­ ÇÃ·¹ÀÌ¾î°¡ ¸ÊÀÇ ¾Æ·¡ÂÊ ³¡¿¡ ÀÖÁö ¾Ê°í
+			if (maze[py + 1][px] != -1) { // ÇÃ·¹ÀÌ¾îÀÇ ¾Æ·¡ÂÊ¿¡ º®ÀÌ ¾ø´Ù¸é
+				py += 2; // ÇÃ·¹ÀÌ¾î¸¦ ¾Æ·¡ÂÊÀ¸·Î ÀÌµ¿½ÃÄÑ ÁØ´Ù.
+				cnt++; // ÇÃ·¹ÀÌ¾î°¡ ÀÌµ¿ÇÑ È½¼ö¿¡ 1À» ´õÇØÁØ´Ù.
 			}
 		}
 	}
 
-	if (key == OF_KEY_UP) { // ìœ„ìª½ ë°©í–¥í‚¤ë¥¼ ëˆŒë €ë‹¤ ë—ê³ 
-		if (game_flag == 1 && py - 2 >= 0) { // ê²Œìž„ ì¤‘ì´ë©´ì„œ í”Œë ˆì´ì–´ê°€ ë§µì˜ ìœ„ìª½ ëì— ìžˆì§€ ì•Šê³ 
-			if (maze[py - 1][px] != -1) { // í”Œë ˆì´ì–´ì˜ ìœ„ìª½ì— ë²½ì´ ì—†ë‹¤ë©´
-				py -= 2; // í”Œë ˆì´ì–´ë¥¼ ìœ„ìª½ìœ¼ë¡œ ì´ë™ì‹œì¼œ ì¤€ë‹¤.
-				cnt++; // í”Œë ˆì´ì–´ê°€ ì´ë™í•œ íšŸìˆ˜ì— 1ì„ ë”í•´ì¤€ë‹¤.
+	if (key == OF_KEY_UP) { // À§ÂÊ ¹æÇâÅ°¸¦ ´­·¶´Ù ¶Ã°í
+		if (game_flag == 1 && py - 2 >= 0) { // °ÔÀÓ ÁßÀÌ¸é¼­ ÇÃ·¹ÀÌ¾î°¡ ¸ÊÀÇ À§ÂÊ ³¡¿¡ ÀÖÁö ¾Ê°í
+			if (maze[py - 1][px] != -1) { // ÇÃ·¹ÀÌ¾îÀÇ À§ÂÊ¿¡ º®ÀÌ ¾ø´Ù¸é
+				py -= 2; // ÇÃ·¹ÀÌ¾î¸¦ À§ÂÊÀ¸·Î ÀÌµ¿½ÃÄÑ ÁØ´Ù.
+				cnt++; // ÇÃ·¹ÀÌ¾î°¡ ÀÌµ¿ÇÑ È½¼ö¿¡ 1À» ´õÇØÁØ´Ù.
 			}
 		}
 	}
 
-	if (key == 't') { // të¥¼ ëˆŒë €ë‹¤ ë—ê³ 
-		if (game_flag == 1 && save_flag == 1) { // ê²Œìž„ ì¤‘ì´ë©´ì„œ ì´ì „ì— í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¥¼ ì €ìž¥í–ˆì—ˆë‹¤ë©´
-			px = sx; // ì €ìž¥í•œ ìœ„ì¹˜ë¡œ í”Œë ˆì´ì–´ë¥¼ ì´ë™ì‹œì¼œ ì¤€ë‹¤.
+	if (key == 't') { // t¸¦ ´­·¶´Ù ¶Ã°í
+		if (game_flag == 1 && save_flag == 1) { // °ÔÀÓ ÁßÀÌ¸é¼­ ÀÌÀü¿¡ ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÀúÀåÇß¾ú´Ù¸é
+			px = sx; // ÀúÀåÇÑ À§Ä¡·Î ÇÃ·¹ÀÌ¾î¸¦ ÀÌµ¿½ÃÄÑ ÁØ´Ù.
 			py = sy;
-			cnt++; // í”Œë ˆì´ì–´ê°€ ì´ë™í•œ íšŸìˆ˜ì— 1ì„ ë”í•´ì¤€ë‹¤.
-			save_flag = 0; // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¥¼ ì €ìž¥í•˜ì§€ ì•Šì•˜ë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+			cnt++; // ÇÃ·¹ÀÌ¾î°¡ ÀÌµ¿ÇÑ È½¼ö¿¡ 1À» ´õÇØÁØ´Ù.
+			save_flag = 0; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÀúÀåÇÏÁö ¾Ê¾Ò´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 		}
 	}
 
-	if (key == ' ') { // ìŠ¤íŽ˜ì´ìŠ¤ë°”ë¥¼ ëˆŒë €ë‹¤ ë—ê³ 
-		if (game_flag == 1) { //ê²Œìž„ ì¤‘ì´ë¼ë©´
-			sx = px; // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¥¼ ì €ìž¥í•´ì¤€ë‹¤.
+	if (key == ' ') { // ½ºÆäÀÌ½º¹Ù¸¦ ´­·¶´Ù ¶Ã°í
+		if (game_flag == 1) { //°ÔÀÓ ÁßÀÌ¶ó¸é
+			sx = px; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÀúÀåÇØÁØ´Ù.
 			sy = py;
-			cnt++; // í”Œë ˆì´ì–´ê°€ ì´ë™í•œ íšŸìˆ˜ì— 1ì„ ë”í•´ì¤€ë‹¤.
-			save_flag = 1; // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¥¼ ì €ìž¥í–ˆë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+			cnt++; // ÇÃ·¹ÀÌ¾î°¡ ÀÌµ¿ÇÑ È½¼ö¿¡ 1À» ´õÇØÁØ´Ù.
+			save_flag = 1; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÀúÀåÇß´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 		}
 	}
 }
@@ -188,56 +188,56 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 
 }
 
-void ofApp::input() {
-	printf("Height? : "); // ë¯¸ë¡œì˜ ê°€ë¡œ, ì„¸ë¡œì˜ ë°© ê°¯ìˆ˜ë¥¼ ë°›ì•„ì¤€ë‹¤.
+void ofApp::input() { // ¹Ì·ÎÀÇ Å©±â¿Í ³­ÀÌµµ¸¦ ÀÔ·Â¹Þ¾ÆÁÖ´Â ÇÔ¼ö
+	printf("Height? : "); // ¹Ì·ÎÀÇ °¡·Î, ¼¼·ÎÀÇ ¹æ °¹¼ö¸¦ ¹Þ¾ÆÁØ´Ù.
 	scanf("%d", &HEIGHT);
 	printf("WIDTH? : ");
 	scanf("%d", &WIDTH);
-	HEIGHT = 2 * HEIGHT + 1; // ë²½ì„ í¬í•¨í•œ ë¯¸ë¡œì˜ ì‹¤ì œ í¬ê¸°ë¥¼ ê³„ì‚°í•´ì¤€ë‹¤.
+	HEIGHT = 2 * HEIGHT + 1; // º®À» Æ÷ÇÔÇÑ ¹Ì·ÎÀÇ ½ÇÁ¦ Å©±â¸¦ °è»êÇØÁØ´Ù.
 	WIDTH = 2 * WIDTH + 1;
 
-	printf("Mode?\n"); // í”Œë ˆì´í•  ëª¨ë“œë¥¼ ë°›ì•„ì¤€ë‹¤.
+	printf("Mode?\n"); // ÇÃ·¹ÀÌÇÒ ¸ðµå¸¦ ¹Þ¾ÆÁØ´Ù.
 	printf("1. Easy\n");
 	printf("2. Normal\n");
 	printf("3. Hard\n");
 	printf("4. Extreme Hard\n");
 	while (1) {
 		scanf("%d", &mode);
-		if (mode == 1 || mode == 2 || mode == 3 || mode == 4) { // ì˜¬ë°”ë¥¸ ëª¨ë“œë¥¼ ë°›ìœ¼ë©´
-			break; // ê·¸ ëª¨ë“œë¡œ í”Œë ˆì´í•œë‹¤.
+		if (mode == 1 || mode == 2 || mode == 3 || mode == 4) { // ¿Ã¹Ù¸¥ ¸ðµå¸¦ ¹ÞÀ¸¸é
+			break; // ±× ¸ðµå·Î ÇÃ·¹ÀÌÇÑ´Ù.
 		}
-		else { // ì˜¬ë°”ë¥´ì§€ ì•Šì€ ëª¨ë“œë¥¼ ë°›ìœ¼ë©´
-			printf("Please enter correct value.\n"); // ì˜¤ë¥˜ ë©”ì‹œì§€ë¥¼ ì¶œë ¥ í›„ ë‹¤ì‹œ ëª¨ë“œë¥¼ ìž…ë ¥ë°›ëŠ”ë‹¤.
+		else { // ¿Ã¹Ù¸£Áö ¾ÊÀº ¸ðµå¸¦ ¹ÞÀ¸¸é
+			printf("Please enter correct value.\n"); // ¿À·ù ¸Þ½ÃÁö¸¦ Ãâ·Â ÈÄ ´Ù½Ã ¸ðµå¸¦ ÀÔ·Â¹Þ´Â´Ù.
 		}
 	}
 }
 
-void ofApp::init() {
-	px = 1; // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¥¼ ì´ˆê¸°í™”í•´ì¤€ë‹¤.
+void ofApp::init() { // ¹Ì·Î¸¦ ÀúÀåÇÒ ¹è¿­À» µ¿Àû ÇÒ´çÇØÁÖ°í º¯¼öµéÀ» ÃÊ±âÈ­ÇØÁÖ´Â ÇÔ¼ö
+	px = 1; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÃÊ±âÈ­ÇØÁØ´Ù.
 	py = 1;
-	cnt = 0; // í”Œë ˆì´ì–´ê°€ ì›€ì§ì¸ íšŸìˆ˜ë¥¼ ì´ˆê¸°í™”í•´ì¤€ë‹¤.
-	save_flag = 0; // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¥¼ ì €ìž¥í•˜ì§€ ì•Šì•˜ë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+	cnt = 0; // ÇÃ·¹ÀÌ¾î°¡ ¿òÁ÷ÀÎ È½¼ö¸¦ ÃÊ±âÈ­ÇØÁØ´Ù.
+	save_flag = 0; // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡¸¦ ÀúÀåÇÏÁö ¾Ê¾Ò´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 
-	maze = new int* [HEIGHT]; // ë¯¸ë¡œë¥¼ ì €ìž¥í•  ë°°ì—´ì„ ë™ì  í• ë‹¹í•´ì¤€ë‹¤.
+	maze = new int* [HEIGHT]; // ¹Ì·Î¸¦ ÀúÀåÇÒ ¹è¿­À» µ¿Àû ÇÒ´çÇØÁØ´Ù.
 	for (int i = 0; i < HEIGHT; i++) {
 		maze[i] = new int[WIDTH];
 	}
 
-	for (int i = 0; i < HEIGHT; i++) { // ë¯¸ë¡œë¥¼ ì €ìž¥í•  ë°°ì—´ì„ ì´ˆê¸°í™”í•´ì¤€ë‹¤.
+	for (int i = 0; i < HEIGHT; i++) { // ¹Ì·Î¸¦ ÀúÀåÇÒ ¹è¿­À» ÃÊ±âÈ­ÇØÁØ´Ù.
 		for (int j = 0; j < WIDTH; j++) {
 			maze[i][j] = -1;
 		}
 	}
 }
 
-void ofApp::randDir() {
+void ofApp::randDir() { // ¹Ì·Î¸¦ »ý¼ºÇÒ ¶§ »ç¿ëÇÒ dir¹è¿­À» ·£´ýÀ¸·Î ¼¯¾îÁÖ´Â ÇÔ¼ö
 	int a, b, cur;
 
-	random_device rd; // ëžœë¤ìœ¼ë¡œ ìˆ«ìžë¥¼ ë½‘ê¸° ìœ„í•œ seedë¥¼ ìƒì„±í•´ì¤€ë‹¤.
+	random_device rd; // ·£´ýÀ¸·Î ¼ýÀÚ¸¦ »Ì±â À§ÇÑ seed¸¦ »ý¼ºÇØÁØ´Ù.
 	mt19937 gen(rd());
-	uniform_int_distribution<int> dis(0, 3); // 0ë¶€í„° 3ê¹Œì§€ ëžœë¤ìœ¼ë¡œ ì¶”ì²¨í•´ì¤€ë‹¤.
+	uniform_int_distribution<int> dis(0, 3); // 0ºÎÅÍ 3±îÁö ·£´ýÀ¸·Î ÃßÃ·ÇØÁØ´Ù.
 
-	for (int i = 0; i < 4; i++) { // 0ë¶€í„° 3ê¹Œì§€ dirë°°ì—´ì„ ëŒë©´ì„œ ëžœë¤ìœ¼ë¡œ ì„ íƒëœ indexì— ìžˆëŠ” ë°©í–¥ê³¼ í˜„ìž¬ì˜ indexì— ìžˆëŠ” ë°©í–¥ì„ ë°”ê¿”ì¤€ë‹¤.
+	for (int i = 0; i < 4; i++) { // 0ºÎÅÍ 3±îÁö dir¹è¿­À» µ¹¸é¼­ ·£´ýÀ¸·Î ¼±ÅÃµÈ index¿¡ ÀÖ´Â ¹æÇâ°ú ÇöÀçÀÇ index¿¡ ÀÖ´Â ¹æÇâÀ» ¹Ù²ãÁØ´Ù.
 		cur = dis(gen);
 
 		a = dir[i][0];
@@ -251,135 +251,135 @@ void ofApp::randDir() {
 	}
 }
 
-void ofApp::makeMaze() {
+void ofApp::makeMaze() { // ÀÔ·Â¹ÞÀº ¹Ì·ÎÀÇ Å©±â¸¦ ¹ÙÅÁÀ¸·Î ·£´ýÇÑ ¹Ì·Î¸¦ »ý¼ºÇØÁÖ´Â ÇÔ¼ö
 	int row, col, nrow, ncol, push_flag;
-	stack<pair<int, int>> s; // DFSë¡œ ë¯¸ë¡œë¥¼ ìƒì„±í•˜ê¸° ìœ„í•´ì„œ stackì„ ì„ ì–¸í•´ì¤€ë‹¤.
+	stack<pair<int, int>> s; // DFS·Î ¹Ì·Î¸¦ »ý¼ºÇÏ±â À§ÇØ¼­ stackÀ» ¼±¾ðÇØÁØ´Ù.
 
-	s.push(make_pair(1, 1)); // í˜„ìž¬ ìœ„ì¹˜ë¥¼ stackì— ë„£ì–´ì£¼ê³  ë°©ë¬¸í–ˆë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+	s.push(make_pair(1, 1)); // ÇöÀç À§Ä¡¸¦ stack¿¡ ³Ö¾îÁÖ°í ¹æ¹®Çß´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 	maze[1][1] = 0;
-	while (s.empty() == 0) { // stackì´ ë¹Œ ë•Œê¹Œì§€ ë°˜ë³µí•´ì¤€ë‹¤.
-		push_flag = 0; // stackì— pushí–ˆë‹¤ëŠ” ê²ƒì„ í‘œì‹œë¥¼ í•´ì£¼ëŠ” í”Œëž˜ê·¸ë‹¤.
+	while (s.empty() == 0) { // stackÀÌ ºô ¶§±îÁö ¹Ýº¹ÇØÁØ´Ù.
+		push_flag = 0; // stack¿¡ pushÇß´Ù´Â °ÍÀ» Ç¥½Ã¸¦ ÇØÁÖ´Â ÇÃ·¡±×´Ù.
 
-		row = s.top().first; // stackì˜ ë§¨ ìœ„ì— ìžˆëŠ” ìœ„ì¹˜ë¥¼ ê°€ì ¸ì™€ì¤€ë‹¤. (popì€ í•˜ì§€ ì•ŠëŠ”ë‹¤.)
+		row = s.top().first; // stackÀÇ ¸Ç À§¿¡ ÀÖ´Â À§Ä¡¸¦ °¡Á®¿ÍÁØ´Ù. (popÀº ÇÏÁö ¾Ê´Â´Ù.)
 		col = s.top().second;
 
 		randDir();
-		for (int i = 0; i < 4; i++) { // ì´ë™í•  ë°©í–¥ì´ ìœ„, ì•„ëž˜, ì™¼ìª½, ì˜¤ë¥¸ìª½ ì´ 4ê°œ ìžˆìœ¼ë¯€ë¡œ 4ë²ˆ ë°˜ë³µí•œë‹¤.
-			nrow = row + 2 * dir[i][0]; // í˜„ìž¬ ìœ„ì¹˜ì™€ ì´ë™í•  ë°©í–¥ì— ë”°ë¼ì„œ ì´ë™í•  ìœ„ì¹˜ë¥¼ ì €ìž¥í•´ì¤€ë‹¤.
+		for (int i = 0; i < 4; i++) { // ÀÌµ¿ÇÒ ¹æÇâÀÌ À§, ¾Æ·¡, ¿ÞÂÊ, ¿À¸¥ÂÊ ÃÑ 4°³ ÀÖÀ¸¹Ç·Î 4¹ø ¹Ýº¹ÇÑ´Ù.
+			nrow = row + 2 * dir[i][0]; // ÇöÀç À§Ä¡¿Í ÀÌµ¿ÇÒ ¹æÇâ¿¡ µû¶ó¼­ ÀÌµ¿ÇÒ À§Ä¡¸¦ ÀúÀåÇØÁØ´Ù.
 			ncol = col + 2 * dir[i][1];
 
-			if (nrow >= 1 && nrow <= HEIGHT - 2 && ncol >= 1 && ncol <= WIDTH - 2 && maze[nrow][ncol] == -1) { // ì´ë™í•  ìœ„ì¹˜ê°€ ë§µì„ ë²—ì–´ë‚˜ì§€ ì•Šê³  ì•„ì§ ë°©ë¬¸í•˜ì§€ ì•ŠëŠ” ê³³ì´ë¼ë©´
-				s.push(make_pair(nrow, ncol)); // ì´ë™í•  ìœ„ì¹˜ë¥¼ stackì— ë„£ì–´ì¤€ë‹¤.
-				push_flag = 1; // stackì— pushí–ˆë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
-				maze[nrow][ncol] = 0; // ì´ë™í•  ìœ„ì¹˜ë¥¼ ë°©ë¬¸í•œ ê³³ì´ë¼ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
-				maze[row + dir[i][0]][col + dir[i][1]] = 0; // ë°©ë¼ë¦¬ ì´ë™í•˜ê¸° ìœ„í•´ì„  ì‚¬ì´ì— ìžˆëŠ” ë²½ë„ í†µê³¼í•´ì•¼ í•˜ë¯€ë¡œ ë²½ë„ ë°©ë¬¸í•œ ê³³ì´ë¼ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+			if (nrow >= 1 && nrow <= HEIGHT - 2 && ncol >= 1 && ncol <= WIDTH - 2 && maze[nrow][ncol] == -1) { // ÀÌµ¿ÇÒ À§Ä¡°¡ ¸ÊÀ» ¹þ¾î³ªÁö ¾Ê°í ¾ÆÁ÷ ¹æ¹®ÇÏÁö ¾Ê´Â °÷ÀÌ¶ó¸é
+				s.push(make_pair(nrow, ncol)); // ÀÌµ¿ÇÒ À§Ä¡¸¦ stack¿¡ ³Ö¾îÁØ´Ù.
+				push_flag = 1; // stack¿¡ pushÇß´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
+				maze[nrow][ncol] = 0; // ÀÌµ¿ÇÒ À§Ä¡¸¦ ¹æ¹®ÇÑ °÷ÀÌ¶ó°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
+				maze[row + dir[i][0]][col + dir[i][1]] = 0; // ¹æ³¢¸® ÀÌµ¿ÇÏ±â À§ÇØ¼± »çÀÌ¿¡ ÀÖ´Â º®µµ Åë°úÇØ¾ß ÇÏ¹Ç·Î º®µµ ¹æ¹®ÇÑ °÷ÀÌ¶ó°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 			}
 		}
 
-		if (push_flag == 0) { // forë¬¸ì„ ë‹¤ ëŒì•˜ìŒì—ë„ stackì— pushë¥¼ í•˜ì§€ ì•Šì•˜ë‹¤ë©´ (í˜„ìž¬ ìœ„ì¹˜ì—ì„œ ê°ˆ ìˆ˜ ìžˆëŠ” ê³³ì´ ì—†ëŠ” ê²ƒê³¼ ê°™ë‹¤.)
-			s.pop(); // í˜„ìž¬ ìœ„ì¹˜ë¥¼ stackì—ì„œ popí•´ì¤€ë‹¤.
+		if (push_flag == 0) { // for¹®À» ´Ù µ¹¾ÒÀ½¿¡µµ stack¿¡ push¸¦ ÇÏÁö ¾Ê¾Ò´Ù¸é (ÇöÀç À§Ä¡¿¡¼­ °¥ ¼ö ÀÖ´Â °÷ÀÌ ¾ø´Â °Í°ú °°´Ù.)
+			s.pop(); // ÇöÀç À§Ä¡¸¦ stack¿¡¼­ popÇØÁØ´Ù.
 		}
 	}
 }
 
-void ofApp::mazeSolve() {
+void ofApp::mazeSolve() { // ·£´ýÀ¸·Î ¸¸µç ¹Ì·Î¸¦ Åë°úÇÏ±â À§ÇØ ÇÊ¿äÇÑ ¿òÁ÷ÀÓÀÇ ÃÖ¼Ò°ªÀ» ±¸ÇØÁÖ´Â ÇÔ¼ö
 	int row, col, nrow, ncol, mrow, mcol;
-	int num = 1; // ë°˜ë³µë¬¸ì´ ë°˜ë³µëœ íšŸìˆ˜ë¥¼ ì €ìž¥í•´ì£¼ëŠ” ë³€ìˆ˜
-	ans = 0; // ë¯¸ë¡œë¥¼ í†µê³¼í•˜ê¸° ìœ„í•´ í•„ìš”í•œ ì›€ì§ìž„ì˜ ìµœì†Œê°’ì„ ì´ˆê¸°í™”í•´ì¤€ë‹¤.
-	queue<pair<int, int>> q; // í•­ìƒ ìµœì„ ì˜ ì •ë‹µì„ ë„ì¶œí•˜ëŠ” BFSë¥¼ ì‚¬ìš©í•  ê²ƒì´ë¯€ë¡œ queueë¥¼ ì„ ì–¸í•œë‹¤.
+	int num = 1; // ¹Ýº¹¹®ÀÌ ¹Ýº¹µÈ È½¼ö¸¦ ÀúÀåÇØÁÖ´Â º¯¼ö
+	ans = 0; // ¹Ì·Î¸¦ Åë°úÇÏ±â À§ÇØ ÇÊ¿äÇÑ ¿òÁ÷ÀÓÀÇ ÃÖ¼Ò°ªÀ» ÃÊ±âÈ­ÇØÁØ´Ù.
+	queue<pair<int, int>> q; // Ç×»ó ÃÖ¼±ÀÇ Á¤´äÀ» µµÃâÇÏ´Â BFS¸¦ »ç¿ëÇÒ °ÍÀÌ¹Ç·Î queue¸¦ ¼±¾ðÇÑ´Ù.
 
-	q.push(make_pair(1, 1)); // í˜„ìž¬ ìœ„ì¹˜ë¥¼ queueì— ë„£ì–´ì£¼ê³  ë°©ë¬¸í–ˆë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+	q.push(make_pair(1, 1)); // ÇöÀç À§Ä¡¸¦ queue¿¡ ³Ö¾îÁÖ°í ¹æ¹®Çß´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 	maze[1][1] = num++;
 
-	while (q.empty() == 0) { // queueê°€ ë¹Œ ë•Œê¹Œì§€ ë°˜ë³µí•´ì¤€ë‹¤.
-		row = q.front().first; // queueì˜ ë§¨ ì•žì— ìžˆëŠ” ìœ„ì¹˜ë¥¼ ê°€ì ¸ì™€ì£¼ê³  popí•´ì¤€ë‹¤.
+	while (q.empty() == 0) { // queue°¡ ºô ¶§±îÁö ¹Ýº¹ÇØÁØ´Ù.
+		row = q.front().first; // queueÀÇ ¸Ç ¾Õ¿¡ ÀÖ´Â À§Ä¡¸¦ °¡Á®¿ÍÁÖ°í popÇØÁØ´Ù.
 		col = q.front().second;
 		q.pop();
 
-		if (row == HEIGHT - 2 && col == WIDTH - 2) { // ë„ì°©ì§€ì— ë„ì°©í–ˆë‹¤ë©´
-			break; // ë°˜ë³µë¬¸ì„ ì¢…ë£Œí•´ì¤€ë‹¤.
+		if (row == HEIGHT - 2 && col == WIDTH - 2) { // µµÂøÁö¿¡ µµÂøÇß´Ù¸é
+			break; // ¹Ýº¹¹®À» Á¾·áÇØÁØ´Ù.
 		}
 
-		for (int i = 0; i < 4; i++) { // ì´ë™í•  ë°©í–¥ì´ ìœ„, ì•„ëž˜, ì™¼ìª½, ì˜¤ë¥¸ìª½ ì´ 4ê°œ ìžˆìœ¼ë¯€ë¡œ 4ë²ˆ ë°˜ë³µí•œë‹¤.
-			nrow = row + dx[i]; // í˜„ìž¬ ìœ„ì¹˜ì™€ ì´ë™í•  ë°©í–¥ì— ë”°ë¼ì„œ ì´ë™í•  ìœ„ì¹˜ë¥¼ ì €ìž¥í•´ì¤€ë‹¤.
+		for (int i = 0; i < 4; i++) { // ÀÌµ¿ÇÒ ¹æÇâÀÌ À§, ¾Æ·¡, ¿ÞÂÊ, ¿À¸¥ÂÊ ÃÑ 4°³ ÀÖÀ¸¹Ç·Î 4¹ø ¹Ýº¹ÇÑ´Ù.
+			nrow = row + dx[i]; // ÇöÀç À§Ä¡¿Í ÀÌµ¿ÇÒ ¹æÇâ¿¡ µû¶ó¼­ ÀÌµ¿ÇÒ À§Ä¡¸¦ ÀúÀåÇØÁØ´Ù.
 			ncol = col + dy[i];
 
-			if (maze[nrow][ncol] == 0) { // ì´ë™í•  ìœ„ì¹˜ê°€ ì´ë™í•  ìˆ˜ ìžˆëŠ” ê³³ì´ë¼ë©´
-				q.push(make_pair(nrow, ncol)); //ì´ë™í•  ìœ„ì¹˜ë¥¼ queueì— ë„£ì–´ì¤€ë‹¤.
-				maze[nrow][ncol] = num; // ì´ë™í•  ìœ„ì¹˜ë¥¼ ë°©ë¬¸í•œ ê³³ì´ë¼ê³  í‘œì‹œí•˜ëŠ”ë° ë°˜ë³µë¬¸ì„ ë°˜ë³µí•œ íšŸìˆ˜ë¡œ í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+			if (maze[nrow][ncol] == 0) { // ÀÌµ¿ÇÒ À§Ä¡°¡ ÀÌµ¿ÇÒ ¼ö ÀÖ´Â °÷ÀÌ¶ó¸é
+				q.push(make_pair(nrow, ncol)); //ÀÌµ¿ÇÒ À§Ä¡¸¦ queue¿¡ ³Ö¾îÁØ´Ù.
+				maze[nrow][ncol] = num; // ÀÌµ¿ÇÒ À§Ä¡¸¦ ¹æ¹®ÇÑ °÷ÀÌ¶ó°í Ç¥½ÃÇÏ´Âµ¥ ¹Ýº¹¹®À» ¹Ýº¹ÇÑ È½¼ö·Î Ç¥½Ã¸¦ ÇØÁØ´Ù.
 			}
 		}
-		num++; // ë°˜ë³µë¬¸ì´ ë°˜ë³µë˜ì—ˆìœ¼ë¯€ë¡œ ë°˜ë³µë¬¸ì´ ë°˜ë³µëœ íšŸìˆ˜ë¥¼ ì €ìž¥í•´ì£¼ëŠ” ë³€ìˆ˜ì— 1ì„ ë”í•´ì¤€ë‹¤. 
+		num++; // ¹Ýº¹¹®ÀÌ ¹Ýº¹µÇ¾úÀ¸¹Ç·Î ¹Ýº¹¹®ÀÌ ¹Ýº¹µÈ È½¼ö¸¦ ÀúÀåÇØÁÖ´Â º¯¼ö¿¡ 1À» ´õÇØÁØ´Ù. 
 	}
 
-	row = HEIGHT - 2; // ìµœì ì˜ ì •ë‹µì„ ì°¾ê¸° ìœ„í•´ ë„ì°©ì§€ì—ì„œë¶€í„° ì´ë™í•  ê²ƒì´ë¯€ë¡œ í˜„ìž¬ ìœ„ì¹˜ë¥¼ ë„ì°©ì§€ë¡œ ë°”ê¿”ì¤€ë‹¤.
+	row = HEIGHT - 2; // ÃÖÀûÀÇ Á¤´äÀ» Ã£±â À§ÇØ µµÂøÁö¿¡¼­ºÎÅÍ ÀÌµ¿ÇÒ °ÍÀÌ¹Ç·Î ÇöÀç À§Ä¡¸¦ µµÂøÁö·Î ¹Ù²ãÁØ´Ù.
 	col = WIDTH - 2;
 	while (1) {
-		for (int i = 0; i < 4; i++) { // ì´ë™í•  ë°©í–¥ì´ ìœ„, ì•„ëž˜, ì™¼ìª½, ì˜¤ë¥¸ìª½ ì´ 4ê°œ ìžˆìœ¼ë¯€ë¡œ 4ë²ˆ ë°˜ë³µí•œë‹¤.
-			mrow = row + dx[i]; // í˜„ìž¬ ìœ„ì¹˜ì™€ ì´ë™í•  ë°©í–¥ì— ë”°ë¼ì„œ ì´ë™í•  ìœ„ì¹˜ì™€ ê·¸ ì‚¬ì´ì— ìžˆëŠ” ìœ„ì¹˜ë¥¼ ì €ìž¥í•´ì¤€ë‹¤.
+		for (int i = 0; i < 4; i++) { // ÀÌµ¿ÇÒ ¹æÇâÀÌ À§, ¾Æ·¡, ¿ÞÂÊ, ¿À¸¥ÂÊ ÃÑ 4°³ ÀÖÀ¸¹Ç·Î 4¹ø ¹Ýº¹ÇÑ´Ù.
+			mrow = row + dx[i]; // ÇöÀç À§Ä¡¿Í ÀÌµ¿ÇÒ ¹æÇâ¿¡ µû¶ó¼­ ÀÌµ¿ÇÒ À§Ä¡¿Í ±× »çÀÌ¿¡ ÀÖ´Â À§Ä¡¸¦ ÀúÀåÇØÁØ´Ù.
 			nrow = row + dx[i] * 2;
 			mcol = col + dy[i];
 			ncol = col + dy[i] * 2;
 
-			if (nrow >= 1 && nrow <= HEIGHT - 2 && ncol >= 1 && ncol <= WIDTH - 2) { // ì´ë™í•  ìœ„ì¹˜ê°€ ë§µì„ ë²—ì–´ë‚˜ì§€ ì•Šê³ 
-				if (maze[row][col] > maze[nrow][ncol] && maze[mrow][mcol] > 0 && maze[nrow][ncol] > 0) { // ì´ë™í•  ìœ„ì¹˜ê°€ í˜„ìž¬ ìœ„ì¹˜ë³´ë‹¤ ë°˜ë³µë¬¸ì´ ë°˜ë³µëœ íšŸìˆ˜ê°€ ì ê³  (ë§Žë‹¤ë©´ ì¶œë°œì§€ë¡œ ê°€ê¹Œì›Œ ì§€ëŠ” ê²ƒì´ ì•„ë‹ˆë¯€ë¡œ ìµœì ì˜ ì •ë‹µì´ ì•„ë‹ˆê²Œ ëœë‹¤.) ì´ë™í•  ìœ„ì¹˜ì™€ ì¤‘ê°„ì— ìžˆëŠ” ìœ„ì¹˜ê°€ ëª¨ë‘ ì´ë™í•  ìˆ˜ ìžˆëŠ” ê³³ì´ë¼ë©´ (ì´ë™í•  ìœ„ì¹˜ì™€ í˜„ìž¬ ìœ„ì¹˜ì˜ ì¤‘ê°„ì— ë²½ì´ ìžˆìœ¼ë©´ ì´ë™í•  ìˆ˜ ì—†ë‹¤.)
-					ans++; // ë¯¸ë¡œë¥¼ í†µê³¼í•˜ê¸° ìœ„í•´ í•„ìš”í•œ ì›€ì§ìž„ì˜ ìµœì†Œê°’ì— 1ì„ ë”í•´ì¤€ë‹¤.
-					row = nrow; // ì´ë™í•  ìœ„ì¹˜ë¥¼ í˜„ìž¬ ìœ„ì¹˜ë¡œ ì €ìž¥í•´ì¤€ë‹¤.
+			if (nrow >= 1 && nrow <= HEIGHT - 2 && ncol >= 1 && ncol <= WIDTH - 2) { // ÀÌµ¿ÇÒ À§Ä¡°¡ ¸ÊÀ» ¹þ¾î³ªÁö ¾Ê°í
+				if (maze[row][col] > maze[nrow][ncol] && maze[mrow][mcol] > 0 && maze[nrow][ncol] > 0) { // ÀÌµ¿ÇÒ À§Ä¡°¡ ÇöÀç À§Ä¡º¸´Ù ¹Ýº¹¹®ÀÌ ¹Ýº¹µÈ È½¼ö°¡ Àû°í (¸¹´Ù¸é Ãâ¹ßÁö·Î °¡±î¿ö Áö´Â °ÍÀÌ ¾Æ´Ï¹Ç·Î ÃÖÀûÀÇ Á¤´äÀÌ ¾Æ´Ï°Ô µÈ´Ù.) ÀÌµ¿ÇÒ À§Ä¡¿Í Áß°£¿¡ ÀÖ´Â À§Ä¡°¡ ¸ðµÎ ÀÌµ¿ÇÒ ¼ö ÀÖ´Â °÷ÀÌ¶ó¸é (ÀÌµ¿ÇÒ À§Ä¡¿Í ÇöÀç À§Ä¡ÀÇ Áß°£¿¡ º®ÀÌ ÀÖÀ¸¸é ÀÌµ¿ÇÒ ¼ö ¾ø´Ù.)
+					ans++; // ¹Ì·Î¸¦ Åë°úÇÏ±â À§ÇØ ÇÊ¿äÇÑ ¿òÁ÷ÀÓÀÇ ÃÖ¼Ò°ª¿¡ 1À» ´õÇØÁØ´Ù.
+					row = nrow; // ÀÌµ¿ÇÒ À§Ä¡¸¦ ÇöÀç À§Ä¡·Î ÀúÀåÇØÁØ´Ù.
 					col = ncol;
-					break; // ì´ë™í•  ìˆ˜ ìžˆëŠ” ìœ„ì¹˜ëŠ” í•˜ë‚˜ë°–ì— ì—†ìœ¼ë¯€ë¡œ ì´ë™í•  ìœ„ì¹˜ë¥¼ ì°¾ìœ¼ë©´ ì¢…ë£Œí•´ì¤€ë‹¤. (BFSì˜ íŠ¹ì„± ìƒ ì´ë™í•  ìœ„ì¹˜ ì¤‘ ë°˜ë³µë¬¸ì´ ë°˜ë³µëœ íšŸìˆ˜ê°€ í˜„ìž¬ ìœ„ì¹˜ë³´ë‹¤ ì ì€ ê³³ì€ í•˜ë‚˜ë°–ì— ì—†ë‹¤.)
+					break; // ÀÌµ¿ÇÒ ¼ö ÀÖ´Â À§Ä¡´Â ÇÏ³ª¹Û¿¡ ¾øÀ¸¹Ç·Î ÀÌµ¿ÇÒ À§Ä¡¸¦ Ã£À¸¸é Á¾·áÇØÁØ´Ù. (BFSÀÇ Æ¯¼º »ó ÀÌµ¿ÇÒ À§Ä¡ Áß ¹Ýº¹¹®ÀÌ ¹Ýº¹µÈ È½¼ö°¡ ÇöÀç À§Ä¡º¸´Ù ÀûÀº °÷Àº ÇÏ³ª¹Û¿¡ ¾ø´Ù.)
 				}
 			}
 		}
 
-		if (row == 1 && col == 1) { // ì¶œë°œì§€ì— ë„ì°©í–ˆë‹¤ë©´
-			break; // ë°˜ë³µë¬¸ì„ ì¢…ë£Œí•´ì¤€ë‹¤.
+		if (row == 1 && col == 1) { // Ãâ¹ßÁö¿¡ µµÂøÇß´Ù¸é
+			break; // ¹Ýº¹¹®À» Á¾·áÇØÁØ´Ù.
 		}
 	}
 }
 
-void ofApp::freeMemory() {
-	for (int i = 0; i < HEIGHT; i++) { // ë™ì  í• ë‹¹í•œ ë°°ì—´ì„ ì´ˆê¸°í™”í•´ì¤€ë‹¤.
+void ofApp::freeMemory() { // µ¿Àû ÇÒ´çÇÑ ¸Þ¸ð¸®¸¦ ÇØÁ¦ÇØÁÖ´Â ÇÔ¼ö
+	for (int i = 0; i < HEIGHT; i++) { // µ¿Àû ÇÒ´çÇÑ ¹è¿­À» ÃÊ±âÈ­ÇØÁØ´Ù.
 		delete[] maze[i];
 	}
 	delete[] maze;
 }
 
-void ofApp::gameStart() {
-	input();
-	init();
-	makeMaze();
-	mazeSolve();
-	printf("Game Start!\n"); // ê²Œìž„ì´ ì‹œìž‘ë˜ì—ˆë‹¤ëŠ” ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•´ì¤€ë‹¤.
-	game_flag = 1; // ê²Œìž„ì´ ì‹œìž‘ë˜ì—ˆë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+void ofApp::gameStart() { // °ÔÀÓÀ» ½ÃÀÛÇÏ±â À§ÇØ ÇÊ¿äÇÑ °ÍµéÀ» ÇØÁÖ´Â ÇÔ¼ö
+	input(); // ÀÔ·ÂÀ» ¹Þ¾ÆÁØ´Ù.
+	init(); // ¹Ì·Î¸¦ ÀúÀåÇÒ ¹è¿­À» µ¿Àû ÇÒ´çÇØÁÖ°í º¯¼öµéÀ» ÃÊ±âÈ­ ÇØÁØ´Ù.
+	makeMaze(); // ¹Ì·Î¸¦ ¸¸µé¾îÁØ´Ù.
+	mazeSolve(); // ¿òÁ÷ÀÓÀÇ ÃÖ¼Ò°ªÀ» ±¸ÇØÁØ´Ù.
+	printf("Game Start!\n"); // °ÔÀÓÀÌ ½ÃÀÛµÇ¾ú´Ù´Â ¸Þ½ÃÁö¸¦ Ãâ·ÂÇØÁØ´Ù.
+	game_flag = 1; // °ÔÀÓÀÌ ½ÃÀÛµÇ¾ú´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 }
 
-void ofApp::drawShadow() {
-	int area = 10; // ë°©ë“¤ í¬ê¸°ë¥¼ 10ìœ¼ë¡œ ì„¤ì •í•´ì¤€ë‹¤.
+void ofApp::drawShadow() { // ¸ðµå¿¡ µû¶ó ¹Ì·Î¿¡ ±×¸²ÀÚ¸¦ ±×·ÁÁÖ´Â ÇÔ¼ö
+	int area = 10; // ¹æµé Å©±â¸¦ 10À¸·Î ¼³Á¤ÇØÁØ´Ù.
 
-	ofSetColor(0); // ê·¸ë¦¼ìžì˜ ìƒ‰ì„ ê²€ì •ìƒ‰ìœ¼ë¡œ ì„¤ì •í•´ì¤€ë‹¤.
-	if (mode == 2) { // ëª¨ë“œê°€ Normalì´ë¼ë©´
-		ofDrawRectangle(5, 5, WIDTH * area - 5, HEIGHT * area - 5); // ë¯¸ë¡œë¥¼ ì „ë¶€ ê·¸ë¦¼ìžë¡œ ë®ì–´ì¤€ë‹¤.
-		ofSetColor(255); // ë°°ê²½ì˜ ìƒ‰ì„ í°ìƒ‰ìœ¼ë¡œ ì„¤ì •í•´ì¤€ë‹¤.
-		ofDrawRectangle((px - 10) * area + 5, (py - 10) * area + 5, 20 * area, 20 * area); // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¡œë¶€í„° ìœ„, ì•„ëž˜, ì™¼ìª½, ì˜¤ë¥¸ìª½ìœ¼ë¡œ 10ì¹¸ì”© ë°í˜€ì¤€ë‹¤.
+	ofSetColor(0); // ±×¸²ÀÚÀÇ »öÀ» °ËÁ¤»öÀ¸·Î ¼³Á¤ÇØÁØ´Ù.
+	if (mode == 2) { // ¸ðµå°¡ NormalÀÌ¶ó¸é
+		ofDrawRectangle(5, 5, WIDTH * area - 5, HEIGHT * area - 5); // ¹Ì·Î¸¦ ÀüºÎ ±×¸²ÀÚ·Î µ¤¾îÁØ´Ù.
+		ofSetColor(255); // ¹è°æÀÇ »öÀ» Èò»öÀ¸·Î ¼³Á¤ÇØÁØ´Ù.
+		ofDrawRectangle((px - 10) * area + 5, (py - 10) * area + 5, 20 * area, 20 * area); // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡·ÎºÎÅÍ À§, ¾Æ·¡, ¿ÞÂÊ, ¿À¸¥ÂÊÀ¸·Î 10Ä­¾¿ ¹àÇôÁØ´Ù.
 	}
-	else if (mode == 3) { // ëª¨ë“œê°€ Hardë¼ë©´
-		ofDrawRectangle(5, 5, WIDTH * area - 5, HEIGHT * area - 5); // ë¯¸ë¡œë¥¼ ì „ë¶€ ê·¸ë¦¼ìžë¡œ ë®ì–´ì¤€ë‹¤.
-		ofSetColor(255); // ë°°ê²½ì˜ ìƒ‰ì„ í°ìƒ‰ìœ¼ë¡œ ì„¤ì •í•´ì¤€ë‹¤.
-		ofDrawRectangle((px - 5) * area + 5, (py - 5) * area + 5, 10 * area, 10 * area); // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¡œë¶€í„° ìœ„, ì•„ëž˜, ì™¼ìª½, ì˜¤ë¥¸ìª½ìœ¼ë¡œ 5ì¹¸ì”© ë°í˜€ì¤€ë‹¤.
+	else if (mode == 3) { // ¸ðµå°¡ Hard¶ó¸é
+		ofDrawRectangle(5, 5, WIDTH * area - 5, HEIGHT * area - 5); // ¹Ì·Î¸¦ ÀüºÎ ±×¸²ÀÚ·Î µ¤¾îÁØ´Ù.
+		ofSetColor(255); // ¹è°æÀÇ »öÀ» Èò»öÀ¸·Î ¼³Á¤ÇØÁØ´Ù.
+		ofDrawRectangle((px - 5) * area + 5, (py - 5) * area + 5, 10 * area, 10 * area); // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡·ÎºÎÅÍ À§, ¾Æ·¡, ¿ÞÂÊ, ¿À¸¥ÂÊÀ¸·Î 5Ä­¾¿ ¹àÇôÁØ´Ù.
 	}
-	else if (mode == 4) { // ëª¨ë“œê°€ Extreme Hardë¼ë©´
-		ofDrawRectangle(5, 5, WIDTH * area - 5, HEIGHT * area - 5); // ë¯¸ë¡œë¥¼ ì „ë¶€ ê·¸ë¦¼ìžë¡œ ë®ì–´ì¤€ë‹¤.
-		ofSetColor(255); // ë°°ê²½ì˜ ìƒ‰ì„ í°ìƒ‰ìœ¼ë¡œ ì„¤ì •í•´ì¤€ë‹¤.
-		ofDrawRectangle((px - 3) * area + 5, (py - 3) * area + 5, 6 * area, 6 * area); // í”Œë ˆì´ì–´ì˜ ìœ„ì¹˜ë¡œë¶€í„° ìœ„, ì•„ëž˜, ì™¼ìª½, ì˜¤ë¥¸ìª½ìœ¼ë¡œ 3ì¹¸ì”© ë°í˜€ì¤€ë‹¤.
+	else if (mode == 4) { // ¸ðµå°¡ Extreme Hard¶ó¸é
+		ofDrawRectangle(5, 5, WIDTH * area - 5, HEIGHT * area - 5); // ¹Ì·Î¸¦ ÀüºÎ ±×¸²ÀÚ·Î µ¤¾îÁØ´Ù.
+		ofSetColor(255); // ¹è°æÀÇ »öÀ» Èò»öÀ¸·Î ¼³Á¤ÇØÁØ´Ù.
+		ofDrawRectangle((px - 3) * area + 5, (py - 3) * area + 5, 6 * area, 6 * area); // ÇÃ·¹ÀÌ¾îÀÇ À§Ä¡·ÎºÎÅÍ À§, ¾Æ·¡, ¿ÞÂÊ, ¿À¸¥ÂÊÀ¸·Î 3Ä­¾¿ ¹àÇôÁØ´Ù.
 	}
 }
 
-void ofApp::gameClear() {
-	game_flag = 0; // ê²Œìž„ì´ ì¢…ë£Œë˜ì—ˆë‹¤ê³  í‘œì‹œë¥¼ í•´ì¤€ë‹¤.
+void ofApp::gameClear() { // °ÔÀÓÀ» ²£À» ¶§ ÇÊ¿äÇÑ °ÍµéÀ» ÇØÁÖ´Â ÇÔ¼ö
+	game_flag = 0; // °ÔÀÓÀÌ Á¾·áµÇ¾ú´Ù°í Ç¥½Ã¸¦ ÇØÁØ´Ù.
 
-	printf("Game Clear!\n"); // ê²Œìž„ì´ ì¢…ë£Œë˜ì—ˆë‹¤ëŠ” ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•´ì¤€ë‹¤.
-	printf("Your score is %d.\n", cnt); // í”Œë ˆì´ì–´ê°€ ì´ë™í•œ íšŸìˆ˜ë¥¼ ì¶œë ¥í•´ì¤€ë‹¤.
-	if (cnt <= ans * 1.5) { // í”Œë ˆì´ì–´ê°€ ì´ë™í•œ íšŸìˆ˜ì™€ ìµœì ì˜ ì •ë‹µì˜ ë¹„ìœ¨ì„ ë°”íƒ•ìœ¼ë¡œ ëž­í¬ë¥¼ ì¶œë ¥í•´ì¤€ë‹¤.
+	printf("Game Clear!\n"); // °ÔÀÓÀÌ Á¾·áµÇ¾ú´Ù´Â ¸Þ½ÃÁö¸¦ Ãâ·ÂÇØÁØ´Ù.
+	printf("Your score is %d.\n", cnt); // ÇÃ·¹ÀÌ¾î°¡ ÀÌµ¿ÇÑ È½¼ö¸¦ Ãâ·ÂÇØÁØ´Ù.
+	if (cnt <= ans * 1.5) { // ÇÃ·¹ÀÌ¾î°¡ ÀÌµ¿ÇÑ È½¼ö¿Í ÃÖÀûÀÇ Á¤´äÀÇ ºñÀ²À» ¹ÙÅÁÀ¸·Î ·©Å©¸¦ Ãâ·ÂÇØÁØ´Ù.
 		printf("Your rank is A.\n");
 	}
 	else if (cnt <= ans * 2) {
@@ -394,6 +394,6 @@ void ofApp::gameClear() {
 	else {
 		printf("Your rank is F.\n");
 	}
-	printf("If you want to play again, please press R.\n"); // ë‹¤ì‹œ í•˜ê³  ì‹¶ìœ¼ë©´ r, ì¢…ë£Œí•˜ê³  ì‹¶ìœ¼ë©´ që¥¼ ëˆ„ë¥´ë¼ëŠ” ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•´ì¤€ë‹¤.
+	printf("If you want to play again, please press R.\n"); // ´Ù½Ã ÇÏ°í ½ÍÀ¸¸é r, Á¾·áÇÏ°í ½ÍÀ¸¸é q¸¦ ´©¸£¶ó´Â ¸Þ½ÃÁö¸¦ Ãâ·ÂÇØÁØ´Ù.
 	printf("Or if you want to exit, please press Q.\n");
 }
