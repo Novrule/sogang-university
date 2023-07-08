@@ -1,4 +1,4 @@
-data EPL;a
+data EPL;
 input team $ win draw loss gf ga gd points european $ lastticket nowticket salary @@;
 cards;
 mancity 28 5 5 94 33 61 89 yes 325 350 2297
