@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
+#include <stdlib.h>ㅁ
 #define MAX_SIZE 100
 
 int nfind(char* string, char* pattern) { //주어진 문자열의 처음부터 하나하나씩 대조해가며 주어진 문자열에서 패턴을 찾는 함수
