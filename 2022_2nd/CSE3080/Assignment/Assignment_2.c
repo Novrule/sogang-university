@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#define MAX_SIZE 100ㅁ
+#define MAX_SIZE 100
 #define COMPARE(x, y) ((x<y) ? -1 : (x==y) ? 0 : 1)
 
 typedef struct {
