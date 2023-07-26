@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+ㅁ
 void insertion_sort(int N, int list[]) { //insertion_sort방식으로 입력받은 배열을 정렬해주는 함수
 	int a, b, c;
 	for (a = 1; a < N; a++) { //첫번째는 정렬되어 있으므로 바로 두번째로 감
