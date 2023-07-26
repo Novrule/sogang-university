@@ -11,7 +11,7 @@ typedef struct {
 
 int row, column;
 
-int readmatrix(FILE* fp, matrix A[]) { //희소 행렬을 입력받아 앞서 정의한 구조체에 저장해주는 함수
+int readmatrix(FILE* fp, matrix A[]) { //희소 행렬을 입력받아 구조체에 저장해주는 함수
 	int avail = 0;
 
 	fscanf(fp, "%d %d", &row, &column);
