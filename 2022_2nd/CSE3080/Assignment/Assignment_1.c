@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h>a
 #include <time.h>
 
 void insertion_sort(int N, int list[]) { //insertion_sort방식으로 입력받은 배열을 정렬해주는 함수
