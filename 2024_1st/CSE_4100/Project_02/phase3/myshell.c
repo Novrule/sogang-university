@@ -427,7 +427,7 @@ void excute_pipe(char *cmd1[],
   return;
 }
 
-void init() {
+void init() {                      // 실행할 때 필요한 초기화 작업
   Signal(SIGCHLD, child_handler);  // 자식 프로세스가 종료되면 핸들러로 처리
   Signal(SIGINT, int_handler);   // Ctrl + C가 입력되면 핸들러로 처리
   Signal(SIGTSTP, stp_handler);  // Ctrl + Z가 입력되면 핸들러로 처리
@@ -440,7 +440,7 @@ void init() {
   }
 }
 
-void set_signal(sigset_t mask) {
+void set_signal(sigset_t mask) {  // 시그널 설정
   if (sigemptyset(&mask) == -1) {
     unix_error("sigemptyset error");
   }
