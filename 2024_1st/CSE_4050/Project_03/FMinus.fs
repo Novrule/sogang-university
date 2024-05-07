@@ -46,7 +46,7 @@ let rec evalExp (exp: Exp) (env: Env) : Val =
     let v1 = evalExp e1 env
     let v2 = evalExp e2 env
     match v1, v2 with
-    | Int n1, Int n2 -> Bool (n1 <> n2)
+    | Int n1, Int n2 -> Bool (n1 = n2)
     | Bool b1, Bool b2 -> Bool (b1 = b2)
     | _ -> raise UndefinedSemantics
   | NotEq (e1, e2) ->
