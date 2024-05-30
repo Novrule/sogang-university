@@ -67,11 +67,8 @@ int main(int argc, char **argv) {
       printf("Connected to (%s, %s)\n", client_hostname, client_port);
       add_client(connfd, &pool);
     }
-    check_clients(&pool);
 
-    if (client_cnt == 0) {
-      write_stock();
-    }
+    check_clients(&pool);
   }
 
   write_stock();
@@ -162,6 +159,9 @@ void check_clients(pool *p) {
           p->clientfd[i] = -1;
 
           client_cnt--;
+          if (client_cnt == 0) {
+            write_stock();
+          }
         } else if (buf[0] == 'b') {
           int id, count;
           char temp[10];
@@ -211,6 +211,9 @@ void check_clients(pool *p) {
         p->clientfd[i] = -1;
 
         client_cnt--;
+        if (client_cnt == 0) {
+          write_stock();
+        }
       }
     }
   }

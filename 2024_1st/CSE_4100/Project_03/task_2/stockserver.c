@@ -4,7 +4,19 @@
 /* $begin echoserverimain */
 #include "csapp.h"
 
+#define NTHREADS 128
+#define SBUFSIZE 1024
 #define STOCK_NUM 10000
+
+typedef struct {
+  int *buf;
+  int n;
+  int front;
+  int rear;
+  sem_t mutex;
+  sem_t slots;
+  sem_t items;
+} sbuf_t;
 
 typedef struct {
   int id;
@@ -12,20 +24,26 @@ typedef struct {
   int price;
 } stock;
 
+sbuf_t sbuf;
+
 int client_cnt = 0;
 int readcnt;
 stock stocks[STOCK_NUM];
 sem_t mutex, w;
 
-void init_sem();
-void excute_thread(int connfd);
+void sbuf_init(sbuf_t *sp, int n);
+void sbuf_insert(sbuf_t *sp, int item);
+int sbuf_remove(sbuf_t *sp);
+
+void init_stock_server();
+void stock_server(int connfd);
 void *thread(void *vargp);
 int read_stock();
 void write_stock();
 void sigint_handler(int sig);
 
 int main(int argc, char **argv) {
-  int listenfd, *connfdp;
+  int listenfd, connfd;
   socklen_t clientlen;
   struct sockaddr_storage clientaddr;
   /* Enough space for any address */  // line:netp:echoserveri:sockaddrstorage
@@ -45,20 +63,19 @@ int main(int argc, char **argv) {
     exit(0);
   }
 
-  init_sem();
+  sbuf_init(&sbuf, SBUFSIZE);
+
+  for (int i = 0; i < NTHREADS; i++) {
+    Pthread_create(&tid, NULL, thread, NULL);
+  }
 
   while (1) {
     clientlen = sizeof(struct sockaddr_storage);
-    connfdp = Malloc(sizeof(int));
-    *connfdp = Accept(listenfd, (SA *)&clientaddr, &clientlen);
+    connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen);
     Getnameinfo((SA *)&clientaddr, clientlen, client_hostname, MAXLINE,
                 client_port, MAXLINE, 0);
     printf("Connected to (%s, %s)\n", client_hostname, client_port);
-    Pthread_create(&tid, NULL, thread, connfdp);
-
-    if (client_cnt == 0) {
-      write_stock();
-    }
+    sbuf_insert(&sbuf, connfd);
   }
 
   write_stock();
@@ -67,18 +84,52 @@ int main(int argc, char **argv) {
 }
 /* $end echoserverimain */
 
-void init_sem() {
+void sbuf_init(sbuf_t *sp, int n) {
+  sp->buf = Calloc(n, sizeof(int));
+  sp->n = n;
+  sp->front = sp->rear = 0;
+
+  Sem_init(&sp->mutex, 0, 1);
+  Sem_init(&sp->slots, 0, n);
+  Sem_init(&sp->items, 0, 0);
+}
+
+void sbuf_insert(sbuf_t *sp, int item) {
+  P(&sp->slots);
+  P(&sp->mutex);
+  sp->buf[(++sp->rear) % (sp->n)] = item;
+  V(&sp->mutex);
+  V(&sp->items);
+}
+
+int sbuf_remove(sbuf_t *sp) {
+  int item;
+
+  P(&sp->items);
+  P(&sp->mutex);
+  item = sp->buf[(++sp->front) % (sp->n)];
+  V(&sp->mutex);
+  V(&sp->slots);
+
+  return item;
+}
+
+void init_stock_server() {
   readcnt = 0;
 
   Sem_init(&mutex, 0, 1);
   Sem_init(&w, 0, 1);
 }
 
-void excute_thread(int connfd) {
+void stock_server(int connfd) {
   int n;
   char buf[MAXLINE];
   rio_t rio;
+  static pthread_once_t once = PTHREAD_ONCE_INIT;
 
+  client_cnt++;
+
+  pthread_once(&once, init_stock_server);
   Rio_readinitb(&rio, connfd);
 
   while ((n = Rio_readlineb(&rio, buf, MAXLINE)) != 0) {
@@ -172,18 +223,20 @@ void excute_thread(int connfd) {
   }
 
   client_cnt--;
+  if (client_cnt == 0) {
+    write_stock();
+  }
 }
 
 void *thread(void *vargp) {
-  int connfd = *((int *)vargp);
-
   Pthread_detach(pthread_self());
-  Free(vargp);
-  client_cnt++;
-  excute_thread(connfd);
-  Close(connfd);
 
-  return NULL;
+  while (1) {
+    int connfd = sbuf_remove(&sbuf);
+
+    stock_server(connfd);
+    Close(connfd);
+  }
 }
 
 int read_stock() {
