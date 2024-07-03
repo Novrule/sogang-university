@@ -8,7 +8,7 @@
 #define SBUFSIZE 1024
 #define STOCK_NUM 10000
 
-typedef struct {
+typedef struct sbuf_t {
   int *buf;
   int n;
   int front;
@@ -18,17 +18,20 @@ typedef struct {
   sem_t items;
 } sbuf_t;
 
-typedef struct {
+typedef struct stock {
   int id;
   int count;
   int price;
+
+  struct stock *left;
+  struct stock *right;
 } stock;
 
 sbuf_t sbuf;
 
 int client_cnt = 0;
+stock *root;
 int readcnt;
-stock stocks[STOCK_NUM];
 sem_t mutex, w;
 
 void sbuf_init(sbuf_t *sp, int n);
@@ -38,6 +41,8 @@ int sbuf_remove(sbuf_t *sp);
 void init_stock_server();
 void stock_server(int connfd);
 void *thread(void *vargp);
+void show_tree(stock *node, char *buf);
+stock *find_node(stock *node, int id);
 int read_stock();
 void write_stock();
 void sigint_handler(int sig);
@@ -145,17 +150,7 @@ void stock_server(int connfd) {
       }
       V(&mutex);
 
-      for (int j = 0; j < STOCK_NUM; j++) {
-        char temp[MAXLINE];
-
-        if (stocks[j].id == -1) {
-          break;
-        }
-
-        sprintf(temp, "%d %d %d\n", stocks[j].id, stocks[j].count,
-                stocks[j].price);
-        strcat(buf, temp);
-      }
+      show_tree(root, buf);
 
       P(&mutex);
       readcnt--;
@@ -177,23 +172,23 @@ void stock_server(int connfd) {
 
       P(&w);
 
-      for (int j = 0; j < STOCK_NUM; j++) {
-        if (stocks[j].id == -1) {
-          break;
-        }
+      stock *node = find_node(root, id);
 
-        if (stocks[j].id == id) {
-          if (stocks[j].count >= count) {
-            stocks[j].count -= count;
-            sprintf(buf, "[buy] success\n");
-          } else {
-            sprintf(buf, "Not enough left stock\n");
-          }
-          Rio_writen(connfd, buf, MAXLINE);
+      if (node == NULL) {
+        sprintf(buf, "No such stock\n");
+        Rio_writen(connfd, buf, MAXLINE);
 
-          break;
-        }
+        exit(0);
       }
+
+      if (node->count >= count) {
+        node->count -= count;
+        sprintf(buf, "[buy] success\n");
+      } else {
+        sprintf(buf, "Not enough left stock\n");
+      }
+
+      Rio_writen(connfd, buf, MAXLINE);
 
       V(&w);
     } else if (buf[0] == 's') {
@@ -204,19 +199,19 @@ void stock_server(int connfd) {
 
       P(&w);
 
-      for (int j = 0; j < STOCK_NUM; j++) {
-        if (stocks[j].id == -1) {
-          break;
-        }
+      stock *node = find_node(root, id);
 
-        if (stocks[j].id == id) {
-          stocks[j].count += count;
-          sprintf(buf, "[sell] success\n");
-          Rio_writen(connfd, buf, MAXLINE);
+      if (node == NULL) {
+        sprintf(buf, "No such stock\n");
+        Rio_writen(connfd, buf, MAXLINE);
 
-          break;
-        }
+        exit(0);
       }
+
+      node->count += count;
+      sprintf(buf, "[sell] success\n");
+
+      Rio_writen(connfd, buf, MAXLINE);
 
       V(&w);
     }
@@ -239,45 +234,80 @@ void *thread(void *vargp) {
   }
 }
 
+void show_tree(stock *node, char *buf) {
+  if (node != NULL) {
+    char temp[MAXLINE];
+
+    show_tree(node->left, buf);
+    sprintf(temp, "%d %d %d\n", node->id, node->count, node->price);
+    strcat(buf, temp);
+    show_tree(node->right, buf);
+  }
+}
+
+stock *find_node(stock *node, int id) {
+  if (node == NULL) {
+    return NULL;
+  } else if (node->id == id) {
+    return node;
+  } else if (id < node->id) {
+    return find_node(node->left, id);
+  } else {
+    return find_node(node->right, id);
+  }
+}
+
+stock *add_tree(stock *node, int id, int count, int price) {
+  if (node == NULL) {
+    node = (stock *)malloc(sizeof(stock));
+    node->id = id;
+    node->count = count;
+    node->price = price;
+    node->left = NULL;
+    node->right = NULL;
+  } else {
+    if (id < node->id) {
+      node->left = add_tree(node->left, id, count, price);
+    } else {
+      node->right = add_tree(node->right, id, count, price);
+    }
+  }
+
+  return node;
+}
+
 int read_stock() {
-  int flag = 0;
   FILE *fp = fopen("stock.txt", "r");
 
   if (fp != NULL) {
-    int i = 0;
     int stock_id, stock_count, stock_price;
-
-    flag = 1;
 
     while (EOF !=
            fscanf(fp, "%d %d %d\n", &stock_id, &stock_count, &stock_price)) {
-      stocks[i].id = stock_id;
-      stocks[i].count = stock_count;
-      stocks[i].price = stock_price;
-      i++;
+      root = add_tree(root, stock_id, stock_count, stock_price);
     }
 
     fclose(fp);
 
-    for (int j = i; j < STOCK_NUM; j++) {
-      stocks[j].id = -1;
-    }
+    return 1;
+  } else {
+    return 0;
   }
+}
 
-  return flag;
+void print_tree(stock *node, FILE *fp) {
+  if (node != NULL) {
+    print_tree(node->left, fp);
+    fprintf(fp, "%d %d %d\n", node->id, node->count, node->price);
+    print_tree(node->right, fp);
+  }
 }
 
 void write_stock() {
   FILE *fp = fopen("stock.txt", "w");
 
   if (fp != NULL) {
-    for (int i = 0; i < STOCK_NUM; i++) {
-      if (stocks[i].id == -1) {
-        break;
-      }
-
-      fprintf(fp, "%d %d %d\n", stocks[i].id, stocks[i].count, stocks[i].price);
-    }
+    print_tree(root, fp);
 
     fclose(fp);
   }
